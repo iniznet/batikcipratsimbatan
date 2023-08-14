@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::name('filament.')
+    ->group(function () {
+        Route::name('auth.')
+            ->prefix('admin')
+            ->group(function () {
+            });
+    });
