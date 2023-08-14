@@ -74,13 +74,11 @@ class Login extends FilamentLogin
      */
     protected function getCredentialsFromFormData(array $data): array
     {
-        $field = 'username';
-
-        if (filter_var($data['credential'], FILTER_VALIDATE_EMAIL)) {
-            $field = 'email';
-        } elseif (is_numeric($data['credential'])) {
-            $field = 'phone';
-        }
+        $field = match($data['credential']) {
+            filter_var($data['credential'], FILTER_VALIDATE_EMAIL) => 'email',
+            is_numeric($data['credential']) => 'phone',
+            default => 'username',
+        };
 
         return [
             $field => $data['credential'],
