@@ -12,15 +12,3 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::name('filament.')
-    ->group(function () {
-        Route::name('auth.')
-            ->prefix('admin')
-            ->group(function () {
-            });
-    });
