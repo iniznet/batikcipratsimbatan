@@ -14,6 +14,11 @@ class Page extends Model
 {
     use HasFactory;
 
+    public function featuredImage(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'featured_image_id', 'id');
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
@@ -22,10 +27,5 @@ class Page extends Model
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    public function image()
-    {
-        return $this->belongsTo(Media::class, 'featured_image_id');
     }
 }

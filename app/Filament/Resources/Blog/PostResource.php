@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources\Blog;
 
-use App\Filament\Resources\Blog\Widgets\BlogOverview;
 use App\Filament\Resources\Blog\PostResource\Pages;
-use App\Filament\Resources\Blog\PostResource\Pages\ListPosts;
 use App\Filament\Resources\Blog\PostResource\RelationManagers\CommentsRelationManager;
+use App\Filament\Resources\Blog\PostResource\Widgets\PostOverview;
 use App\Models\Blog\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -127,7 +126,7 @@ class PostResource extends Resource
                             ->schema([
                                 CuratorPicker::make('featured_image_id')
                                     ->label(__('filament-fields.labels.image'))
-                                    ->relationship('featured_image', 'id'),
+                                    ->relationship('featuredImage', 'id'),
                             ])
                     ])
                     ->columnSpanFull(),
@@ -140,6 +139,7 @@ class PostResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-fields.labels.image'))
+                    ->getStateUsing(fn (Post $post): string => $post->featuredImage?->path)
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('title')
@@ -256,9 +256,7 @@ class PostResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            BlogOverview::make([
-                'table' => ListPosts::class,
-            ])
+            PostOverview::class,
         ];
     }
 

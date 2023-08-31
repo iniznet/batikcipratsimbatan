@@ -256,6 +256,7 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-fields.labels.image'))
+                    ->getStateUsing(fn (Product $product) => $product->productPictures->first()?->path)
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('title')
