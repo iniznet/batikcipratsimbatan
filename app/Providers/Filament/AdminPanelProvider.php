@@ -2,6 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\Management\UserResource;
+use Awcodes\Curator\CuratorPlugin;
+use Awcodes\FilamentQuickCreate\QuickCreatePlugin;
+use Awcodes\LightSwitch\LightSwitchPlugin;
+use BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use BezhanSalleh\FilamentShield\Resources\RoleResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -16,14 +23,35 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Pboivin\FilamentPeek\FilamentPeekPlugin;
+use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
+use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
+use Tapp\FilamentAuthenticationLog\FilamentAuthenticationLogPlugin;
+use Tapp\FilamentAuthenticationLog\Resources\AuthenticationLogResource;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        try {
+            $settings = DB::table('settings')->get();
+
+            foreach ($settings as $setting) {
+                if ($setting->type === 'repeater') {
+                    $value = json_decode($setting->value, true);
+                } else {
+                    $value = json_decode($setting->value);
+                }
+
+                config()->set('settings.' . $setting->key, $value);
+            }
+        } catch (\Exception) {}
+
         return $panel
             ->default()
+            ->brandName(config('settings.site_title'))
             ->id('admin')
             ->path('admin')
             ->login(\App\Filament\Pages\Auth\Login::class)
@@ -53,6 +81,28 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->plugins([
+                FilamentShieldPlugin::make(),
+                LightSwitchPlugin::make(),
+                EnvironmentIndicatorPlugin::make(),
+                QuickCreatePlugin::make()
+                    ->excludes([
+                        AuthenticationLogResource::class,
+                        UserResource::class,
+                        RoleResource::class,
+                    ]),
+                FilamentLanguageSwitchPlugin::make(),
+                FilamentPeekPlugin::make(),
+                FilamentSpatieLaravelHealthPlugin::make(),
+                CuratorPlugin::make()
+                    ->label('Media')
+                    ->pluralLabel('Media')
+                    ->navigationIcon('heroicon-o-photo')
+                    ->navigationSort(0)
+                    ->navigationCountBadge(),
+                FilamentAuthenticationLogPlugin::make(),
             ]);
     }
 }
