@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Models\Management\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,16 +20,17 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content')->nullable();
+            // @todo: future feature
             $table->unsignedInteger('qty')->default(0);
             $table->boolean('featured')->default(false);
             $table->decimal('price', 10, 2)->nullable();
+            // @todo: future feature
             $table->decimal('cost', 10, 2)->nullable();
             $table->timestamp('published_at')->useCurrent();
             $table->string('status')->default('draft');
             $table->json('colors')->nullable();
             $table->json('sizes')->nullable();
             $table->json('platforms')->nullable();
-            $table->json('images')->nullable();
             $table->timestamps();
         });
     }
@@ -39,6 +40,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('author_id');
+            $table->dropConstrainedForeignId('category_id');
+            $table->dropConstrainedForeignId('material_id');
+        });
         Schema::dropIfExists('products');
     }
 };
