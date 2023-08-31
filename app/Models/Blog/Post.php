@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Blog;
 
+use App\Models\Comment;
+use App\Models\Management\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class Page extends Model
+class Post extends Model
 {
     use HasFactory;
 
@@ -15,7 +18,12 @@ class Page extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function comments()
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
