@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Pboivin\FilamentPeek\FilamentPeekPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
+use RyanChandler\FilamentNavigation\FilamentNavigation;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Tapp\FilamentAuthenticationLog\FilamentAuthenticationLogPlugin;
 use Tapp\FilamentAuthenticationLog\Resources\AuthenticationLogResource;
@@ -103,6 +104,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationSort(0)
                     ->navigationCountBadge(),
                 FilamentAuthenticationLogPlugin::make(),
+                FilamentNavigation::make(),
             ]);
     }
 }
