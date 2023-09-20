@@ -7,26 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ config('settings.site_title') }} - @yield('description', config('settings.tagline'))</title>
   @vite('resources/css/app.css')
+  @livewireStyles
+  @vite('resources/js/app.js')
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body x-data="{ mobileNav: false }">
-  <div id="app" class="min-h-screen">
+  <div id="app" class="relative min-h-screen">
     @include('sections.header')
 
-    <main>
+    <main class="text-gray-800">
       @hasSection('hero')
         @yield('hero')
       @endif
 
-      <div class="w-full max-w-5xl mx-auto">
-        @yield('content')
-      </div>
+      @yield('content')
     </main>
 
     @include('sections.footer')
   </div>
 
-  @vite('resources/js/app.js')
+  @yield('widgets')
+  @livewireScriptConfig
 </body>
 
 </html>

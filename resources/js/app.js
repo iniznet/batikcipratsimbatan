@@ -4,9 +4,18 @@ import.meta.glob([
     '../fonts/**',
 ]);
 
-import Alpine from 'alpinejs';
+import AsyncAlpine from 'async-alpine';
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+
+import AlpineNavigationComponent from './components/navigation';
 
 document.addEventListener('alpine:init', () => {
+    Alpine.data('navigation', AlpineNavigationComponent);
 });
 
-Alpine.start();
+AsyncAlpine
+    .init(Alpine)
+    .data('carousel', () => import('./components/carousel'))
+    .start();
+
+Livewire.start();
