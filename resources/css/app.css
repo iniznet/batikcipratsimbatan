@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --swiper-pagination-color: rgb(202 138 4 / 1);
+    --swiper-pagination-bullet-size: .75rem;
+}
+
 [x-cloak] {
     display: none;
+}
+
+.bg-pattern-1 {
+    background-image: url('@images/pattern-1.jpg');
 }
