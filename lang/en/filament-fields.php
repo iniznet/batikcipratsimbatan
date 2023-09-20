@@ -44,6 +44,9 @@ return [
         'tagline' => 'Tagline',
         'description' => 'Description',
         'whatsapp_numbers' => 'WhatsApp numbers',
+        'primary_navigation' => 'Primary navigation',
+        'footer_navigation_1' => 'Footer navigation 1',
+        'footer_navigation_2' => 'Footer navigation 2',
     ],
 
     'descriptions' => [

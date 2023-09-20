@@ -34,12 +34,12 @@ return new class extends Migration
 
         Settings::create([
             'key' => 'tagline',
-            'type' => 'text',
+            'type' => 'textarea',
         ]);
 
         Settings::create([
             'key' => 'description',
-            'type' => 'text',
+            'type' => 'textarea',
         ]);
 
         Settings::create([
@@ -57,6 +57,17 @@ return new class extends Migration
                     ],
                 ],
             ],
+        ]);
+
+        Settings::create([
+            'key' => 'primary_navigation',
+            'type' => 'menu',
+        ], [
+            'key' => 'footer_navigation_1',
+            'type' => 'menu',
+        ], [
+            'key' => 'footer_navigation_2',
+            'type' => 'menu',
         ]);
     }
 

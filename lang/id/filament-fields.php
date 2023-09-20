@@ -44,6 +44,9 @@ return [
         'tagline' => 'Slogan',
         'description' => 'Deskripsi',
         'whatsapp_numbers' => 'Nomor WhatsApp',
+        'primary_navigation' => 'Navigasi Utama',
+        'footer_navigation_1' => 'Navigasi Dasar 1',
+        'footer_navigation_2' => 'Navigasi Dasar 2',
     ],
 
     'descriptions' => [

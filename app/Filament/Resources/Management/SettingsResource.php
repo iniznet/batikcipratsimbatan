@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use RyanChandler\FilamentNavigation\Models\Navigation;
 
 class SettingsResource extends Resource
 {
@@ -58,7 +59,15 @@ class SettingsResource extends Resource
 
                 Tables\Columns\TextColumn::make('value')
                     ->label(__('filament-fields.labels.value'))
-                    ->getStateUsing(fn (Settings $record) => self::arrayToString($record->value))
+                    ->getStateUsing(function (Settings $record) {
+                        $value = self::arrayToString($record->value);
+
+                        if (strlen($value) > 80) {
+                            $value = substr($value, 0, 80) . '...';
+                        }
+
+                        return $value;
+                    })
                     ->searchable(),
             ])
             ->actions([
@@ -99,6 +108,21 @@ class SettingsResource extends Resource
             ],
             'image' => [
                 Forms\Components\FileUpload::make($name)
+                    ->label(__('filament-fields.labels.' . $key)),
+            ],
+            'menu' => [
+                Forms\Components\Select::make($name)
+                    ->label(__('filament-fields.labels.' . $key))
+                    ->options(function () {
+                        $menus = Navigation::all();
+
+                        return $menus->mapWithKeys(function ($menu) {
+                            return [$menu->handle => $menu->name];
+                        });
+                    }),
+            ],
+            'textarea' => [
+                Forms\Components\Textarea::make($name)
                     ->label(__('filament-fields.labels.' . $key)),
             ],
             'number' => [
