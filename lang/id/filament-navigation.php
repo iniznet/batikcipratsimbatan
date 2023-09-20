@@ -5,6 +5,7 @@ return [
         'blog' => 'Blog',
         'shop' => 'Toko',
         'management' => 'Manajemen',
+        'homepage' => 'Beranda',
     ],
 
     'labels' => [
@@ -17,5 +18,7 @@ return [
         'user' => 'Pengguna',
         'users' => 'Pengguna',
         'settings' => 'Pengaturan',
+        'carousel' => 'Korsel',
+        'people' => 'Tim',
     ],
 ];

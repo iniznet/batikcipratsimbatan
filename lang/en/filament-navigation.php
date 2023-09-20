@@ -5,6 +5,7 @@ return [
         'blog' => 'Blog',
         'shop' => 'Shop',
         'management' => 'Management',
+        'homepage' => 'Homepage',
     ],
 
     'labels' => [
@@ -17,5 +18,7 @@ return [
         'user' => 'User',
         'users' => 'Users',
         'settings' => 'Settings',
+        'carousel' => 'Carousel',
+        'people' => 'People',
     ],
 ];
