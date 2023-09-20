@@ -139,7 +139,7 @@ class PostResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label(__('filament-fields.labels.image'))
-                    ->getStateUsing(fn (Post $post): string => $post->featuredImage?->path)
+                    ->getStateUsing(fn (Post $post): string => $post->featuredImage?->path ?? '')
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('title')
