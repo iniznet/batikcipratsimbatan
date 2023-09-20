@@ -19,6 +19,7 @@
         "bezhansalleh/filament-language-switch": "^2.0",
         "bezhansalleh/filament-shield": "^3.0@beta",
         "coolsam/flatpickr": "^3.0",
+        "darryldecode/cart": "^4.2",
         "encodia/laravel-health-env-vars": "^1.6",
         "filament/filament": "^3.0-stable",
         "glebsky/laravel-lang-generator": "^1.0",
