@@ -41,6 +41,7 @@
         "spatie/security-advisories-health-check": "^1.1",
         "stijnvanouplines/blade-country-flags": "^1.0",
         "tapp/filament-authentication-log": "^3.0",
+        "technikermathe/blade-lucide-icons": "^2.13",
         "torann/geoip": "^3.0",
         "victord11/ssl-certification-health-check": "^1.0"
     },

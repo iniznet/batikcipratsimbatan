@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -6,8 +8,15 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            'title': ['"Great Vibes"', 'Raleway'],
+            'sans': ['Raleway', ...defaultTheme.fontFamily.sans],
+        },
+    },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+  ],
 }
 
