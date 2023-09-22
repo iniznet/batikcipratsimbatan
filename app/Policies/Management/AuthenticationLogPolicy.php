@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Policies\Management;
 
 use App\Models\Management\User;
 use Rappasoft\LaravelAuthenticationLog\Models\AuthenticationLog;
