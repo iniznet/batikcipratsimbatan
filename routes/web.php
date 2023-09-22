@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::directory(dirname(__DIR__) . '/app/Http/Controllers');
+Route::middleware('web')->prefix('/app')->as('app.')->scopeBindings()->group(function() {
+    Route::directory(dirname(__DIR__) . '/app/Http/Controllers');
+});
