@@ -9,6 +9,10 @@ import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.e
 
 import AlpineNavigationComponent from './components/navigation';
 
+import AlpineClassInitDirective from './directives/x-class-init';
+
+Alpine.directive('class-init', AlpineClassInitDirective);
+
 document.addEventListener('alpine:init', () => {
     Alpine.data('navigation', AlpineNavigationComponent);
 });
