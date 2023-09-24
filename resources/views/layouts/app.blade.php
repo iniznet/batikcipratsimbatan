@@ -18,7 +18,7 @@
   <div id="app" class="relative min-h-screen">
     @include('sections.header')
 
-    <main class="text-gray-800">
+    <main class="mt-20 text-gray-800 lg:m-0">
       @hasSection('hero')
         @yield('hero')
       @endif
