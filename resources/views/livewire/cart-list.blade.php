@@ -28,9 +28,9 @@
       </div>
 
       {{-- Cart items --}}
-      <div class="flex flex-col gap-4 px-8 py-8">
+      <div class="gap-4 lg:px-8 lg:py-8">
         {{-- Not found text & button --}}
-        <div class="flex flex-col items-center justify-center gap-4">
+        <div class="space-y-4 text-center">
           <p class="text-lg text-center text-gray-500">Tidak ada produk di keranjang.</p>
           <button
             type="button"
