@@ -18,7 +18,7 @@ return [
         'user' => 'Pengguna',
         'users' => 'Pengguna',
         'settings' => 'Pengaturan',
-        'carousel' => 'Korsel',
+        'carousel' => 'Unggulan',
         'people' => 'Tim',
     ],
 ];

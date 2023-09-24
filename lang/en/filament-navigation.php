@@ -18,7 +18,7 @@ return [
         'user' => 'User',
         'users' => 'Users',
         'settings' => 'Settings',
-        'carousel' => 'Carousel',
+        'carousel' => 'Featured',
         'people' => 'People',
     ],
 ];
