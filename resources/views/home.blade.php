@@ -51,32 +51,41 @@
       </h3>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        <div class="flex flex-col items-center justify-center w-full p-4 bg-white rounded-lg">
-            <div class="mb-4">
-                <img class="object-cover object-center w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
-            </div>
-            <div class="text-center">
-                <p class="text-xl font-bold">Lorem Ipsum</p>
-                <p class="opacity-80">Pembatik</p>
-            </div>
+        <div class="text-center pb-4 bg-white rounded-lg">
+          <div class="mb-4">
+              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
+          </div>
+          <div class="text-center">
+              <p class="text-xl font-bold">Lorem Ipsum</p>
+              <p class="opacity-80">Pembatik</p>
+          </div>
         </div>
-        <div class="flex flex-col items-center justify-center w-full p-4 bg-white rounded-lg">
-            <div class="mb-4">
-                <img class="object-cover object-center w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
-            </div>
-            <div class="text-center">
-                <p class="text-xl font-bold">Lorem Ipsum</p>
-                <p class="opacity-80">Pembatik</p>
-            </div>
+        <div class="text-center pb-4 bg-white rounded-lg">
+          <div class="mb-4">
+              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
+          </div>
+          <div class="text-center">
+              <p class="text-xl font-bold">Lorem Ipsum</p>
+              <p class="opacity-80">Pembatik</p>
+          </div>
         </div>
-        <div class="flex flex-col items-center justify-center w-full p-4 bg-white rounded-lg">
-            <div class="mb-4">
-                <img class="object-cover object-center w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
-            </div>
-            <div class="text-center">
-                <p class="text-xl font-bold">Lorem Ipsum</p>
-                <p class="opacity-80">Pembatik</p>
-            </div>
+        <div class="text-center pb-4 bg-white rounded-lg">
+          <div class="mb-4">
+              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
+          </div>
+          <div class="text-center">
+              <p class="text-xl font-bold">Lorem Ipsum</p>
+              <p class="opacity-80">Pembatik</p>
+          </div>
+        </div>
+        <div class="text-center pb-4 bg-white rounded-lg">
+          <div class="mb-4">
+              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
+          </div>
+          <div class="text-center">
+              <p class="text-xl font-bold">Lorem Ipsum</p>
+              <p class="opacity-80">Pembatik</p>
+          </div>
         </div>
       </div>
     </div>
