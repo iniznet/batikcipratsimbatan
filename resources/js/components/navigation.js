@@ -9,6 +9,8 @@ export default () => ({
         this.$watch('shown', (value) => {
             this.$dispatch('toggle-nav', value);
         });
+
+        this.scroll();
     },
 
     scroll() {
