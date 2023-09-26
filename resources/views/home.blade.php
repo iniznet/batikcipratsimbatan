@@ -51,36 +51,9 @@
       </h3>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        <div class="text-center pb-4 bg-white rounded-lg">
+        <div class="pb-4 overflow-hidden text-center bg-white rounded-lg group">
           <div class="mb-4">
-              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
-          </div>
-          <div class="text-center">
-              <p class="text-xl font-bold">Lorem Ipsum</p>
-              <p class="opacity-80">Pembatik</p>
-          </div>
-        </div>
-        <div class="text-center pb-4 bg-white rounded-lg">
-          <div class="mb-4">
-              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
-          </div>
-          <div class="text-center">
-              <p class="text-xl font-bold">Lorem Ipsum</p>
-              <p class="opacity-80">Pembatik</p>
-          </div>
-        </div>
-        <div class="text-center pb-4 bg-white rounded-lg">
-          <div class="mb-4">
-              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
-          </div>
-          <div class="text-center">
-              <p class="text-xl font-bold">Lorem Ipsum</p>
-              <p class="opacity-80">Pembatik</p>
-          </div>
-        </div>
-        <div class="text-center pb-4 bg-white rounded-lg">
-          <div class="mb-4">
-              <img class="object-cover max-h-56 w-full rounded" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
+              <img class="object-cover w-full transition duration-300 max-h-56 group-hover:scale-110" src="{{ Vite::asset('resources/img/orang-1.jpg') }}" alt="photo">
           </div>
           <div class="text-center">
               <p class="text-xl font-bold">Lorem Ipsum</p>
@@ -162,9 +135,9 @@
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
         {{-- Big card --}}
         <div class="lg:col-start-3 lg:col-end-6 lg:order-2">
-          <div class="p-4 bg-white rounded">
-            <div class="mb-4 aspect-w-6 aspect-h-4">
-              <img class="object-cover w-full rounded" src="{{ Vite::asset('resources/img/acara-1.jpg') }}" alt="photo">
+          <div class="p-4 bg-white rounded group">
+            <div class="mb-4 overflow-hidden rounded aspect-w-6 aspect-h-4">
+              <img class="object-cover w-full transition duration-500 group-hover:scale-110" src="{{ Vite::asset('resources/img/acara-1.jpg') }}" alt="photo">
             </div>
             <div>
               <p class="text-xl font-bold">Lorem Ipsum</p>
@@ -183,9 +156,9 @@
         {{-- List small card --}}
         <div class="lg:col-start-1 lg:col-end-3 lg:order-1">
           @foreach (range(1, 3) as $blog)
-            <div class="p-4 mb-4 bg-white rounded">
-              <div class="float-left w-32 mr-4">
-                <img class="object-cover object-center rounded" src="{{ Vite::asset('resources/img/acara-' . rand(2, 3) . '.jpg') }}" alt="photo">
+            <div class="p-4 mb-4 bg-white rounded group">
+              <div class="float-left w-32 mr-4 overflow-hidden rounded">
+                <img class="object-cover object-center transition duration-300 group-hover:scale-110" src="{{ Vite::asset('resources/img/acara-' . rand(2, 3) . '.jpg') }}" alt="photo">
               </div>
               <div>
                 <div class="flex pb-2 text-sm text-gray-500 flex-warp">
