@@ -89,12 +89,13 @@
               slidesPerView: 4,
             },
           },
+          spaceBetween: 48,
         })"
         class="relative overflow-hidden swiper-container"
       >
-        <div class="gap-12 swiper-wrapper">
+        <div class="swiper-wrapper">
           @foreach (range(1, 10) as $product)
-            <div class="swiper-slide">
+            <div class="mr-12 swiper-slide">
               @include('partials.product-card')
             </div>
           @endforeach
