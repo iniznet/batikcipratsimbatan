@@ -17,20 +17,22 @@ return new class extends Migration
             $table->foreignId('author_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->foreignId('category_id')->nullable()->constrained('shop_categories')->nullOnDelete();
             $table->foreignId('material_id')->nullable()->constrained('shop_materials')->nullOnDelete();
+
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content')->nullable();
             // @todo: future feature
-            $table->unsignedInteger('qty')->default(0);
             $table->boolean('featured')->default(false);
-            $table->decimal('price', 10, 2)->nullable();
+
             // @todo: future feature
+            $table->decimal('price', 10, 2)->nullable();
             $table->decimal('cost', 10, 2)->nullable();
+
             $table->timestamp('published_at')->useCurrent();
             $table->string('status')->default('draft');
             $table->json('colors')->nullable();
             $table->json('sizes')->nullable();
-            $table->json('platforms')->nullable();
+
             $table->timestamps();
         });
     }
