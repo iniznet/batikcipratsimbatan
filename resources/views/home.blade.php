@@ -70,7 +70,7 @@
         <x-horizontal-line-dot direction="left" />
         <div class="px-4">
           <span class="text-yellow-600">Produk</span>
-          <span>Terlaris</span>
+          <span>Unggulan</span>
         </div>
         <x-horizontal-line-dot direction="right" />
       </h3>
@@ -95,8 +95,8 @@
       >
         <div class="swiper-wrapper">
           @foreach (range(1, 10) as $product)
-            <div class="mr-12 swiper-slide">
-              @include('partials.product-card')
+            <div class="swiper-slide">
+              @include('partials.product-card', ['imageClass' => 'aspect-w-3 aspect-h-4'])
             </div>
           @endforeach
         </div>
