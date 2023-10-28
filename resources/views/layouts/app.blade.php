@@ -11,14 +11,15 @@
   @vite('resources/js/app.js')
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Moulpali:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
-<body x-data="{ mobileNav: false }">
-  <div id="app" class="relative min-h-screen">
+<body>
+  <div class="overflow-hidden pt-20 md:pt-24 2xl:pt-32 text-[#222]">
     @include('sections.header')
 
-    <main class="mt-20 text-gray-800 lg:m-0">
+    <main>
       @hasSection('hero')
         @yield('hero')
       @endif
