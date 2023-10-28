@@ -22,6 +22,7 @@
         "darryldecode/cart": "^4.2",
         "encodia/laravel-health-env-vars": "^1.6",
         "filament/filament": "^3.0-stable",
+        "gehrisandro/tailwind-merge-laravel": "^1.0",
         "glebsky/laravel-lang-generator": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
@@ -44,6 +45,7 @@
         "tapp/filament-authentication-log": "^3.0",
         "technikermathe/blade-lucide-icons": "^2.13",
         "torann/geoip": "^3.0",
+        "ublabs/blade-simple-icons": "^0.89.0",
         "victord11/ssl-certification-health-check": "^1.0"
     },
     "require-dev": {

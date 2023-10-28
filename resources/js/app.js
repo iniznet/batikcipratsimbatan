@@ -20,6 +20,7 @@ document.addEventListener('alpine:init', () => {
 AsyncAlpine
     .init(Alpine)
     .data('carousel', () => import('./components/carousel'))
+    .data('iframe', () => import('./components/iframe'))
     .start();
 
 Livewire.start();
