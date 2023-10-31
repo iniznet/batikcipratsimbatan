@@ -278,9 +278,9 @@
     <div class="relative z-10 px-5 md:px-8 lg:px-10 max-w-[1440px] xl:px-24 2xl:max-w-full mx-auto">
       {{-- Heading --}}
       <div class="mb-8 text-center md:mb-16 lg:pt-16 font-heading">
-        <div class="text-xl text-[#222] mb-2 tracking-wide 2xl:text-3xl">Katalog</div>
-        <h2 class="text-2xl xl:text-4xl font-bold text-[#222] mb-4 2xl:text-6xl">Produk-produk kami</h2>
-        <p class="inline-flex max-w-4xl font-sans text-xl md:text-2xl">Kami menyediakan berbagai macam produk unggulan yang dapat anda pilih sesuai dengan kebutuhan anda.</p>
+        <div class="text-xl text-[#222] mb-2 tracking-wide 2xl:text-3xl">eKatalog</div>
+        <h2 class="text-2xl xl:text-4xl font-bold text-[#222] mb-4 2xl:text-6xl">Produk unggulan kami</h2>
+        <p class="inline-flex max-w-4xl font-sans text-xl md:text-2xl">Eksplorasi seni dan keindahan produk-produk unggulan karya pembatik difabel</p>
       </div>
 
       {{-- Iframe --}}
