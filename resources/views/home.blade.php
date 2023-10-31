@@ -210,7 +210,7 @@
                 :shape="'circle'"
                 class="p-2 lg:p-4 xl:p-6"
               >
-                <x-lucide-megaphone class="text-white transform w-10 h-10 md:w-14 md:h-14 -rotate-12" />
+                <x-lucide-megaphone class="w-10 h-10 text-white transform md:w-14 md:h-14 -rotate-12" />
               </x-lucide>
             </div>
 
@@ -253,118 +253,18 @@
       {{-- Heading --}}
       <div class="mb-8 md:mb-16 lg:pt-16 font-heading 2xl:pr-44">
         <div class="text-xl text-[#222] mb-2 tracking-wide 2xl:text-3xl">Kegiatan Kami</div>
-        <h2 class="text-2xl xl:text-4xl font-bold text-[#222] mb-4 2xl:text-6xl">Aktivitas sehari-hari kami</h2>
+        <h2 class="text-2xl xl:text-4xl font-bold text-[#222] mb-4 2xl:text-6xl">Aktivitas sehari-hari</h2>
       </div>
 
       {{-- Cards --}}
       <div class="grid gap-8 lg:grid-cols-3">
-        {{-- Card --}}
-        <div class="grid gap-8 p-8 bg-white shadow-lg rounded-tl-3xl rounded-br-3xl">
-          {{-- Image --}}
-          <div>
-            <x-image
-              :source="'/build/assets/acara-1-fddba1a3.jpg'"
-              class="lg:!aspect-h-[1]"
-            />
-          </div>
-
-          {{-- Content --}}
-          <div>
-            <h5 class="text-2xl font-semibold xl:text-3xl 2xl:text-4xl font-heading">Lorem ipsum dolor sit amet consectetur adipiscing elit</h5>
-          </div>
-
-          <x-button
-            :type="'link'"
-            :color="''"
-            :ring="false"
-            :size="'lg'"
-            :effects="['text']"
-            href="https://www.facebook.com/edcampua"
-            class="!p-0 order-3 md:justify-start"
-          >
-            <span class="uppercase">Baca Selengkapnya</span>
-            <x-lucide
-              :color="'primary'"
-              :size="'lg'"
-              :shape="'circle'"
-              :effects="['background', 'scale-in']"
-            >
-              <x-lucide-arrow-up-right :class="'w-6 h-6 text-white'" />
-            </x-lucide>
-          </x-button>
-        </div>
-
-        {{-- Card --}}
-        <div class="grid gap-8 p-8 bg-white shadow-lg rounded-tl-3xl rounded-br-3xl">
-          {{-- Image --}}
-          <div class="order-2">
-            <x-image
-              :source="'/build/assets/acara-2-21ec201a.jpg'"
-              class="lg:!aspect-h-[1]"
-            />
-          </div>
-
-          {{-- Content --}}
-          <div>
-            <h5 class="text-2xl font-semibold xl:text-3xl 2xl:text-4xl font-heading">Lorem ipsum dolor sit amet consectetur adipiscing elit</h5>
-          </div>
-
-          <x-button
-            :type="'link'"
-            :color="''"
-            :ring="false"
-            :size="'lg'"
-            :effects="['text']"
-            href="https://www.facebook.com/edcampua"
-            class="!p-0 order-3 md:justify-start"
-          >
-            <span class="uppercase">Baca Selengkapnya</span>
-            <x-lucide
-              :color="'primary'"
-              :size="'lg'"
-              :shape="'circle'"
-              :effects="['background', 'scale-in']"
-            >
-              <x-lucide-arrow-up-right :class="'w-6 h-6 text-white'" />
-            </x-lucide>
-          </x-button>
-        </div>
-
-        {{-- Card --}}
-        <div class="grid gap-8 p-8 bg-white shadow-lg rounded-tl-3xl rounded-br-3xl">
-          {{-- Image --}}
-          <div class="order-2">
-            <x-image
-              :source="'/build/assets/acara-3-438f4a90.jpg'"
-              class="lg:!aspect-h-[1]"
-            />
-          </div>
-
-          {{-- Content --}}
-          <div>
-            <h5 class="text-2xl font-semibold xl:text-3xl 2xl:text-4xl font-heading">Lorem ipsum dolor sit amet consectetur adipiscing elit</h5>
-          </div>
-
-          <x-button
-            :type="'link'"
-            :color="''"
-            :ring="false"
-            :size="'lg'"
-            :effects="['text']"
-            href="https://www.facebook.com/edcampua"
-            class="!p-0 order-3 md:justify-start"
-          >
-            <span class="uppercase">Baca Selengkapnya</span>
-            <x-lucide
-              :color="'primary'"
-              :size="'lg'"
-              :shape="'circle'"
-              :effects="['background', 'scale-in']"
-            >
-              <x-lucide-arrow-up-right :class="'w-6 h-6 text-white'" />
-            </x-lucide>
-          </x-button>
-        </div>
+        @include('partials.blog-card')
+        @include('partials.blog-card', [
+          'reverse' => true,
+        ])
+        @include('partials.blog-card', [
+          'reverse' => true,
+        ])
       </div>
     </div>
 
@@ -405,7 +305,7 @@
         {{-- Left - Heading --}}
         <div class="text-white font-heading">
           <div class="mb-4 text-xl tracking-wide 2xl:text-3xl">Hubungi Kami</div>
-          <h2 class="mb-4 text-3xl md:text-5xl font-bold 2xl:text-6xl">Dapatkan informasi lebih lanjut melalui media sosial WhatsApp.</h2>
+          <h2 class="mb-4 text-3xl font-bold md:text-5xl 2xl:text-6xl">Dapatkan informasi lebih lanjut melalui media sosial WhatsApp.</h2>
         </div>
 
         {{-- Right --}}
