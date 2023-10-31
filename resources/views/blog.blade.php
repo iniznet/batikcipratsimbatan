@@ -8,9 +8,11 @@
         {{ __('Our Activity') }}
       </x-heading>
     </x-container>
+
+    {{-- Background --}}
+    <img src="{{ asset('bg-dots.svg') }}" class="absolute -top-32 -right-[3px] z-0 w-1/2" alt="">
   </section>
 
-  {{-- Grid Blog 2 columns --}}
   <section class="relative pb-40 overflow-hidden">
     <x-container>
       {{-- Big Card --}}
@@ -52,6 +54,7 @@
         </x-button>
       </div>
 
+      {{-- Grid Blog 2 columns --}}
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         @include('partials.blog-card', ['background' => 'bg-[#f5f7fd]'])
         @include('partials.blog-card', ['background' => 'bg-[#f5f7fd]'])
@@ -62,9 +65,12 @@
         @include('partials.blog-card', ['background' => 'bg-[#f5f7fd]'])
         @include('partials.blog-card', ['background' => 'bg-[#f5f7fd]'])
       </div>
+
+      {{-- Pagination --}}
+
     </x-container>
+
+    {{-- Background --}}
+    <img src="{{ asset('bg-dots-left.svg') }}" class="absolute left-4 -bottom-2 z-0 max-w-[50%]">
   </section>
-
-  {{-- Pagination --}}
-
 @endsection
