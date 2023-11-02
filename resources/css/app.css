@@ -2,15 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --swiper-pagination-color: rgb(202 138 4 / 1);
-    --swiper-pagination-bullet-size: .75rem;
-}
+@layer base {
+    :root {
+        --swiper-pagination-color: rgb(202 138 4 / 1);
+        --swiper-pagination-bullet-size: .75rem;
+    }
 
-[x-cloak] {
-    display: none;
-}
+    [x-cloak] {
+        display: none;
+    }
 
-.bg-pattern-1 {
-    background-image: url('@images/pattern-1.jpg');
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .bg-pattern-1 {
+        background-image: url('@images/pattern-1.jpg');
+    }
 }

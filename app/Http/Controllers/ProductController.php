@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use SmashedEgg\LaravelRouteAnnotation\Route;
 
 #[Route(middleware: ['web'])]
-class ShopController extends Controller
+class ProductController extends Controller
 {
-    #[Route('/product', name: 'product.home', methods: ['GET'])]
+    #[Route('/product/{slug}', name: 'product.detail', methods: ['GET'])]
     public function detail(Request $request)
     {
         return view('product');
