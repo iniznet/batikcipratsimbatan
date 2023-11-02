@@ -127,6 +127,11 @@ public SortType $sortType = SortType::NEWEST; --}}
               @include('partials.product-card', ['product' => $product])
             @endforeach
           @endif
+
+          {{-- Pagination --}}
+          <div class="col-span-full">
+            {{ $products->links() }}
+          </div>
         </div>
       </div>
     </div>
