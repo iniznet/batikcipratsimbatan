@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use App\Models\Blog\BlogCategory;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Carbon\Carbon;
 use FilamentTiptapEditor\TiptapEditor;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
@@ -59,13 +60,7 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\Section::make()
                             ->schema([
-                                Forms\Components\TextInput::make('title')
-                                    ->label(__('filament-fields.labels.title'))
-                                    ->required()
-                                    ->live(onBlur: true)
-                                    ->autofocus()
-                                    ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null)
-                                    ->maxLength(255),
+                                TitleWithSlugInput::make(fieldTitle: 'title', fieldSlug: 'slug'),
 
                                 TiptapEditor::make('content')
                                     ->label(__('filament-fields.labels.content'))
@@ -113,10 +108,6 @@ class PostResource extends Resource
                                     ->required()
                                     ->reactive()
                                     ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $state === 'publish' ? $set('published_at', now()) : $state),
-
-                                Forms\Components\Hidden::make('slug')
-                                    ->required()
-                                    ->unique(Post::class, 'slug', ignoreRecord: true),
 
                                 Forms\Components\Select::make('author_id')
                                     ->label(__('filament-fields.labels.author_id'))

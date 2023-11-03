@@ -10,6 +10,7 @@ use App\Models\Shop\ShopCategory;
 use App\Models\Shop\ShopMaterial;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\FilamentTableRepeater\Components\TableRepeater;
+use Camya\Filament\Forms\Components\TitleWithSlugInput;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -60,13 +61,7 @@ class ProductResource extends Resource
             ->schema([
                 Forms\Components\Section::make()
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->label(__('filament-fields.labels.title'))
-                            ->required()
-                            ->autofocus()
-                            ->maxLength(255)
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                        TitleWithSlugInput::make(fieldTitle: 'title', fieldSlug: 'slug'),
 
                         TiptapEditor::make('content')
                             ->label(__('filament-fields.labels.content'))
@@ -134,10 +129,6 @@ class ProductResource extends Resource
                             ->required()
                             ->reactive()
                             ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $state === 'publish' ? $set('published_at', now()) : $state),
-
-                        Forms\Components\Hidden::make('slug')
-                            ->required()
-                            ->unique(Product::class, 'slug', ignoreRecord: true),
 
                         Forms\Components\Select::make('author_id')
                             ->label(__('filament-fields.labels.author'))
