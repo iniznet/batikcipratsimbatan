@@ -36,9 +36,9 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        try {
-            $settings = DB::table('settings')->get();
+        $settings = DB::table('settings')->get();
 
+        if ($settings) {
             foreach ($settings as $setting) {
                 if ($setting->type === 'repeater') {
                     $value = json_decode($setting->value, true);
@@ -48,7 +48,7 @@ class AdminPanelProvider extends PanelProvider
 
                 config()->set('settings.' . $setting->key, $value);
             }
-        } catch (\Exception) {}
+        }
 
         return $panel
             ->default()
