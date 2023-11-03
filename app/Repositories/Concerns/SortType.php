@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Concerns;
+namespace App\Repositories\Concerns;
 
 enum SortType: string
 {

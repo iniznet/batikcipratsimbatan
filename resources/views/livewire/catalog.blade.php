@@ -1,32 +1,3 @@
-{{-- public string $query = '';
-
-/** @var \App\Models\Shop\Product[] */
-public Collection $products;
-
-/** @var \App\Models\Shop\ShopCategory[] */
-public Collection $categories;
-
-/** @var \App\Models\Shop\ShopMaterial[] */
-public Collection $materials;
-
-/** @var int[] */
-public array $selectedCategories = [];
-
-/** @var int[] */
-public array $selectedMaterials = [];
-
-public float $minPrice = 0;
-
-public float $maxPrice;
-
-public array $sortTypes = [
-    SortType::NEWEST,
-    SortType::OLDEST,
-    SortType::PRICE_ASC,
-    SortType::PRICE_DESC,
-];
-
-public SortType $sortType = SortType::NEWEST; --}}
 <div>
   {{-- Shop: two cols, left for sidebar as filters and right for query, sort types and product cards --}}
   <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">

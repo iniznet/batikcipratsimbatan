@@ -2,11 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Livewire\Concerns\SortType;
-use App\Models\Shop\Product;
-use App\Models\Shop\ShopCategory;
-use App\Models\Shop\ShopMaterial;
-use Illuminate\Support\Collection;
+use App\Repositories\Contracts\CatalogRepository;
+use App\Repositories\Contracts\ShopCategoryRepository;
+use App\Repositories\Contracts\ShopMaterialRepository;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -50,11 +48,6 @@ class Catalog extends Component
         $this->resetPage();
     }
 
-    public function updatingSortType()
-    {
-        $this->resetPage();
-    }
-
     public function updatingMinPrice()
     {
         $this->resetPage();
@@ -65,37 +58,35 @@ class Catalog extends Component
         $this->resetPage();
     }
 
-    public function render()
+    public function updatingSelectedSortType()
     {
-        $categories = ShopCategory::all();
-        $materials = ShopMaterial::all();
+        $this->resetPage();
+    }
 
-        $sortTypes = collect([
-            SortType::NEWEST,
-            SortType::OLDEST,
-            SortType::PRICE_ASC,
-            SortType::PRICE_DESC,
-        ])->map(fn (SortType $sortType) => [
-            'value' => $sortType->value,
-            'label' => $sortType->label(),
-        ])->toArray();
-        $this->selectedSortType = $this->selectedSortType ?? SortType::NEWEST->value;
+    public function mount()
+    {
 
-        $products = Product::query()
-            ->when($this->query, fn ($query) => $query->where('title', 'like', "%{$this->query}%"))
-            ->when($this->selectedCategories, fn ($query) => $query->whereHas('category', fn ($query) => $query->whereIn('id', $this->selectedCategories)))
-            ->when($this->selectedMaterials, fn ($query) => $query->whereHas('material', fn ($query) => $query->whereIn('id', $this->selectedMaterials)))
-            ->when($this->minPrice, fn ($query) => $query->where('price', '>=', $this->minPrice))
-            ->when($this->maxPrice, fn ($query) => $query->where('price', '<=', $this->maxPrice))
-            ->when($this->selectedSortType, fn ($query) => match ($this->selectedSortType) {
-                SortType::NEWEST->value => $query->orderByDesc('created_at'),
-                SortType::OLDEST->value => $query->orderBy('created_at'),
-                SortType::PRICE_ASC->value => $query->orderBy('price'),
-                SortType::PRICE_DESC->value => $query->orderByDesc('price'),
-            })
-            ->cursorPaginate(10);
+    }
 
-        $this->maxPrice = $products->isNotEmpty() ? Product::all()->max('price') : $this->maxPrice;
+    public function render(
+        CatalogRepository $catalogRepository,
+        ShopCategoryRepository $shopCategoryRepository,
+        ShopMaterialRepository $shopMaterialRepository
+    ) {
+        $categories = $shopCategoryRepository->all();
+        $materials = $shopMaterialRepository->all();
+
+        $sortTypes = $catalogRepository->getSortTypes();
+        $this->selectedSortType = $this->sortType ?? $sortTypes[0]['value'];
+
+        $products = $catalogRepository->filter(
+            $this->query,
+            $this->selectedCategories,
+            $this->selectedMaterials,
+            $this->minPrice,
+            $this->maxPrice,
+            $this->selectedSortType,
+        );
 
         return view('livewire.catalog', compact('products', 'categories', 'materials', 'sortTypes'));
     }
