@@ -13,6 +13,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
@@ -65,10 +66,16 @@ class PageResource extends Resource
                                     ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null)
                                     ->maxLength(255),
 
-                                Forms\Components\MarkdownEditor::make('content')
+                                TiptapEditor::make('content')
                                     ->label(__('filament-fields.labels.content'))
                                     ->required()
-                                    ->columnSpanFull(),
+                                    ->columnSpanFull()
+                                    ->profile('custom')
+                                    ->tools([
+                                        'heading','hr', 'bullet-list', 'ordered-list', 'checked-list', '|',
+                                        'bold', 'italic', 'lead', 'small', '|',
+                                        'link', 'media', 'table', '|'
+                                    ]),
 
                                 Forms\Components\DateTimePicker::make('published_at')
                                     ->label(__('filament-fields.labels.published_at'))

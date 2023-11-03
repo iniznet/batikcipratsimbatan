@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use App\Models\Blog\BlogCategory;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Carbon\Carbon;
+use FilamentTiptapEditor\TiptapEditor;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class PostResource extends Resource
@@ -66,10 +67,16 @@ class PostResource extends Resource
                                     ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null)
                                     ->maxLength(255),
 
-                                Forms\Components\MarkdownEditor::make('content')
+                                TiptapEditor::make('content')
                                     ->label(__('filament-fields.labels.content'))
                                     ->required()
-                                    ->columnSpanFull(),
+                                    ->columnSpanFull()
+                                    ->profile('custom')
+                                    ->tools([
+                                        'heading','hr', 'bullet-list', 'ordered-list', 'checked-list', '|',
+                                        'bold', 'italic', 'lead', 'small', '|',
+                                        'link', 'media', 'table', '|'
+                                    ]),
 
                                 Forms\Components\Select::make('category_id')
                                     ->label(__('filament-fields.labels.category'))

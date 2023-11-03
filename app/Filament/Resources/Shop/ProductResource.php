@@ -20,6 +20,7 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
 use Filament\Support\RawJs;
+use FilamentTiptapEditor\TiptapEditor;
 
 class ProductResource extends Resource
 {
@@ -67,15 +68,15 @@ class ProductResource extends Resource
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                        Forms\Components\MarkdownEditor::make('content')
+                        TiptapEditor::make('content')
                             ->label(__('filament-fields.labels.content'))
                             ->required()
                             ->columnSpanFull()
-                            ->disableToolbarButtons([
-                                'heading',
-                                'code',
-                                'table',
-                                'attachFiles',
+                            ->profile('custom')
+                            ->tools([
+                                'heading','hr', 'bullet-list', 'ordered-list', 'checked-list', '|',
+                                'bold', 'italic', 'lead', 'small', '|',
+                                'link', 'media', 'table', '|'
                             ]),
 
                         Forms\Components\Select::make('category_id')
@@ -168,84 +169,84 @@ class ProductResource extends Resource
                             ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
                             ->dehydrateStateUsing(fn ($state) => str_replace(['.', ','], '', $state)),
 
-                        Forms\Components\Section::make(__('filament-fields.labels.variants'))
-                        ->schema([
-                            TableRepeater::make('colors')
-                                ->schema([
-                                    Forms\Components\TextInput::make('name')
-                                        ->label(__('filament-fields.labels.color'))
-                                        ->required(),
-                                    Forms\Components\TextInput::make('extra_price')
-                                        ->label(__('filament-fields.labels.extra_price'))
-                                        ->placeholder(__('filament-fields.placeholders.extra_price'))
-                                        ->prefix('Rp')
-                                        ->mask(RawJs::make(<<<'JS'
-                                            $money($input, ',', '.')
-                                        JS))
-                                        ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
-                                        ->dehydrateStateUsing(fn ($state) => str_replace(['.', ','], '', $state)),
-                                ])
-                                ->addActionLabel(__('filament-fields.actions.add_color'))
-                                ->orderColumn('name')
-                                ->defaultItems(1)
-                                ->hiddenLabel()
-                                ->columns(2),
+                        // Forms\Components\Section::make(__('filament-fields.labels.variants'))
+                        // ->schema([
+                        //     TableRepeater::make('colors')
+                        //         ->schema([
+                        //             Forms\Components\TextInput::make('name')
+                        //                 ->label(__('filament-fields.labels.color'))
+                        //                 ->required(),
+                        //             Forms\Components\TextInput::make('extra_price')
+                        //                 ->label(__('filament-fields.labels.extra_price'))
+                        //                 ->placeholder(__('filament-fields.placeholders.extra_price'))
+                        //                 ->prefix('Rp')
+                        //                 ->mask(RawJs::make(<<<'JS'
+                        //                     $money($input, ',', '.')
+                        //                 JS))
+                        //                 ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
+                        //                 ->dehydrateStateUsing(fn ($state) => str_replace(['.', ','], '', $state)),
+                        //         ])
+                        //         ->addActionLabel(__('filament-fields.actions.add_color'))
+                        //         ->orderColumn('name')
+                        //         ->defaultItems(1)
+                        //         ->hiddenLabel()
+                        //         ->columns(2),
 
-                            TableRepeater::make('sizes')
-                                ->schema([
-                                    Forms\Components\TextInput::make('name')
-                                        ->label(__('filament-fields.labels.size'))
-                                        ->required(),
-                                    Forms\Components\TextInput::make('extra_price')
-                                        ->label(__('filament-fields.labels.extra_price'))
-                                        ->placeholder(__('filament-fields.placeholders.extra_price'))
-                                        ->prefix('Rp')
-                                        ->mask(RawJs::make(<<<'JS'
-                                            $money($input, ',', '.')
-                                        JS))
-                                        ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
-                                        ->dehydrateStateUsing(fn ($state) => str_replace(['Rp', '.', ','], '', $state)),
-                                ])
-                                ->addActionLabel(__('filament-fields.actions.add_size'))
-                                ->orderColumn('name')
-                                ->defaultItems(1)
-                                ->hiddenLabel()
-                                ->columns(2),
-                        ])
-                        ->collapsible(),
+                        //     TableRepeater::make('sizes')
+                        //         ->schema([
+                        //             Forms\Components\TextInput::make('name')
+                        //                 ->label(__('filament-fields.labels.size'))
+                        //                 ->required(),
+                        //             Forms\Components\TextInput::make('extra_price')
+                        //                 ->label(__('filament-fields.labels.extra_price'))
+                        //                 ->placeholder(__('filament-fields.placeholders.extra_price'))
+                        //                 ->prefix('Rp')
+                        //                 ->mask(RawJs::make(<<<'JS'
+                        //                     $money($input, ',', '.')
+                        //                 JS))
+                        //                 ->formatStateUsing(fn ($state) => number_format($state, 0, ',', '.'))
+                        //                 ->dehydrateStateUsing(fn ($state) => str_replace(['Rp', '.', ','], '', $state)),
+                        //         ])
+                        //         ->addActionLabel(__('filament-fields.actions.add_size'))
+                        //         ->orderColumn('name')
+                        //         ->defaultItems(1)
+                        //         ->hiddenLabel()
+                        //         ->columns(2),
+                        // ])
+                        // ->collapsible(),
                     ])
                     ->collapsible(),
 
-                Forms\Components\Section::make(__('filament-fields.labels.platforms'))
-                    ->schema([
-                            TableRepeater::make('platforms')
-                                ->schema([
-                                    Forms\Components\Select::make('name')
-                                        ->label(__('filament-fields.labels.platform'))
-                                        ->options([
-                                            'tokopedia' => __('Tokopedia'),
-                                            'shopee' => __('Shopee'),
-                                            'bukalapak' => __('Bukalapak'),
-                                            'lazada' => __('Lazada'),
-                                            'blibli' => __('Blibli'),
-                                            'whatsapp' => __('WhatsApp'),
-                                            'instagram' => __('Instagram'),
-                                            'facebook' => __('Facebook'),
-                                            'tiktok' => __('TikTok'),
-                                        ])
-                                        ->required(),
-                                    Forms\Components\TextInput::make('value')
-                                        ->label(__('filament-fields.labels.link'))
-                                        ->required(),
-                                ])
-                                ->addActionLabel(__('filament-fields.actions.add_platform'))
-                                ->orderColumn('name')
-                                ->defaultItems(1)
-                                ->hiddenLabel()
-                                ->columns(2)
-                                ->required(),
-                    ])
-                    ->collapsible(),
+                // Forms\Components\Section::make(__('filament-fields.labels.platforms'))
+                //     ->schema([
+                //             TableRepeater::make('platforms')
+                //                 ->schema([
+                //                     Forms\Components\Select::make('name')
+                //                         ->label(__('filament-fields.labels.platform'))
+                //                         ->options([
+                //                             'tokopedia' => __('Tokopedia'),
+                //                             'shopee' => __('Shopee'),
+                //                             'bukalapak' => __('Bukalapak'),
+                //                             'lazada' => __('Lazada'),
+                //                             'blibli' => __('Blibli'),
+                //                             'whatsapp' => __('WhatsApp'),
+                //                             'instagram' => __('Instagram'),
+                //                             'facebook' => __('Facebook'),
+                //                             'tiktok' => __('TikTok'),
+                //                         ])
+                //                         ->required(),
+                //                     Forms\Components\TextInput::make('value')
+                //                         ->label(__('filament-fields.labels.link'))
+                //                         ->required(),
+                //                 ])
+                //                 ->addActionLabel(__('filament-fields.actions.add_platform'))
+                //                 ->orderColumn('name')
+                //                 ->defaultItems(1)
+                //                 ->hiddenLabel()
+                //                 ->columns(2)
+                //                 ->required(),
+                //     ])
+                //     ->collapsible(),
             ])
             ->columns(1);
     }
