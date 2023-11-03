@@ -309,7 +309,8 @@ class ProductResource extends Resource
                     ->label(__('filament-fields.labels.featured'))
                     ->boolean()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('published_at')
