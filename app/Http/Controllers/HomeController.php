@@ -22,11 +22,21 @@ class HomeController extends Controller
         $post = $postRepository->getLatest();
         $posts = $postRepository->get(2);
 
+        $openingMessage = __('Halo, saya');
+        $topicMessage = __('Saya ingin bertanya tentang');
+        $closingMessage = __('Terima kasih.');
+        $phones = config('settings.whatsapp_numbers', []);
+        $phone = $phones[0]['phone'] ?? null;
+
         return view('home', [
             'featureds' => $featureds,
             'socials' => $socials,
             'post' => $post,
-            'posts' => $posts
+            'posts' => $posts,
+            'openingMessage' => $openingMessage,
+            'topicMessage' => $topicMessage,
+            'closingMessage' => $closingMessage,
+            'phone' => $phone,
         ]);
     }
 }

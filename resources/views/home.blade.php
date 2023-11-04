@@ -236,34 +236,47 @@
       <div class="bg-[#006ce2] py-20 px-4 md:p-12 lg:p-16 md:rounded-3xl lg:rounded-[40px] grid lg:grid-cols-2 gap-10">
         {{-- Left - Heading --}}
         <div class="text-white font-heading">
-          <div class="mb-4 text-xl tracking-wide 2xl:text-3xl">Hubungi Kami</div>
-          <h2 class="mb-4 text-3xl font-bold md:text-5xl 2xl:text-6xl">Dapatkan informasi lebih lanjut melalui media sosial WhatsApp.</h2>
+          <div class="mb-4 text-xl tracking-wide 2xl:text-3xl">{{ __('Hubungi Kami') }}</div>
+          <h2 class="mb-4 text-3xl font-bold md:text-5xl 2xl:text-6xl">{{ __('Dapatkan informasi lebih lanjut melalui WhatsApp.') }}</h2>
         </div>
 
         {{-- Right --}}
         <div>
           {{-- Form --}}
-          <form class="space-y-8">
+          <form
+            x-ignore
+            ax-load="visible"
+            x-data="contactForm('{{ $phone }}', {
+              opening: '{{ $openingMessage }}',
+              topic: '{{ $topicMessage }}',
+              closing: '{{ $closingMessage }}',
+            })"
+            class="space-y-8"
+          >
             {{-- Name --}}
             <div class="flex flex-col space-y-2">
-              <label for="name" class="text-lg font-semibold text-white font-heading">Nama</label>
-              <input type="text" id="name" class="w-full px-6 py-4 text-lg rounded-full shadow outline-none focus:shadow-inner" placeholder="Nama">
+              <label for="name" class="text-lg font-semibold text-white font-heading">{{ __('Nama') }}</label>
+              <input type="text" x-model="name" class="w-full px-6 py-4 text-lg rounded-full shadow outline-none focus:shadow-inner" placeholder="{{ __('Nama') }}">
             </div>
 
             {{-- Topic --}}
             <div class="flex flex-col space-y-2">
-              <label for="topic" class="text-lg font-semibold text-white font-heading">Topik</label>
-              <input type="text" id="topic" class="w-full px-6 py-4 text-lg rounded-full shadow outline-none focus:shadow-inner" placeholder="Topik">
+              <label for="topic" class="text-lg font-semibold text-white font-heading">{{ __('Topik') }}</label>
+              <input type="text" x-model="topic" class="w-full px-6 py-4 text-lg rounded-full shadow outline-none focus:shadow-inner" placeholder="{{ __('Topik') }}">
             </div>
 
             {{-- Message --}}
             <div class="flex flex-col space-y-2">
-              <label for="message" class="text-lg font-semibold text-white font-heading">Pesan</label>
-              <textarea id="message" class="w-full px-6 py-4 text-lg shadow outline-none rounded-2xl focus:shadow-inner" placeholder="Pesan" rows="4"></textarea>
+              <label for="message" class="text-lg font-semibold text-white font-heading">{{ __('Pesan') }}</label>
+              <textarea x-model="message" class="w-full px-6 py-4 text-lg shadow outline-none rounded-2xl focus:shadow-inner" placeholder="{{ __('Pesan') }}" rows="4"></textarea>
             </div>
 
             {{-- Submit --}}
-            <button type="submit" class="w-full py-4 px-6 rounded-full shadow text-lg outline-none focus:shadow-inner bg-[#ff5729] text-white font-semibold uppercase tracking-wider">Kirim</button>
+            <button
+              @click.prevent="send"
+              type="submit"
+              class="w-full py-4 px-6 rounded-full shadow text-lg outline-none focus:shadow-inner bg-[#ff5729] text-white font-semibold uppercase tracking-wider"
+            >{{ __('Kirim') }}</button>
           </form>
         </div>
       </div>

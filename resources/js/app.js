@@ -22,6 +22,7 @@ AsyncAlpine
     .data('carousel', () => import('./components/carousel'))
     .data('iframe', () => import('./components/iframe'))
     .data('gallery', () => import('./components/gallery'))
+    .data('contactForm', () => import('./components/contactForm'))
     .start();
 
 Livewire.start();
