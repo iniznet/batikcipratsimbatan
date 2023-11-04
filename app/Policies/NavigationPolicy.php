@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Policies\Blog;
+namespace App\Policies;
 
 use App\Models\Management\User;
-use App\Models\Blog\Post;
+use RyanChandler\FilamentNavigation\Models\Navigation;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class NavigationPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_blog::post');
+        return $user->can('view_any_navigation');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\Management\User  $user
-     * @param  \App\Models\Blog\Post  $post
+     * @param  \RyanChandler\FilamentNavigation\Models\Navigation  $navigation
      * @return bool
      */
-    public function view(User $user, Post $post): bool
+    public function view(User $user, Navigation $navigation): bool
     {
-        return $user->can('view_blog::post');
+        return $user->can('view_navigation');
     }
 
     /**
@@ -41,31 +41,31 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_blog::post');
+        return $user->can('create_navigation');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Management\User  $user
-     * @param  \App\Models\Blog\Post  $post
+     * @param  \RyanChandler\FilamentNavigation\Models\Navigation  $navigation
      * @return bool
      */
-    public function update(User $user, Post $post): bool
+    public function update(User $user, Navigation $navigation): bool
     {
-        return $user->can('update_blog::post');
+        return $user->can('update_navigation');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Management\User  $user
-     * @param  \App\Models\Blog\Post  $post
+     * @param  \RyanChandler\FilamentNavigation\Models\Navigation  $navigation
      * @return bool
      */
-    public function delete(User $user, Post $post): bool
+    public function delete(User $user, Navigation $navigation): bool
     {
-        return $user->can('delete_blog::post');
+        return $user->can('delete_navigation');
     }
 
     /**
@@ -76,19 +76,19 @@ class PostPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_blog::post');
+        return $user->can('delete_any_navigation');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\Management\User  $user
-     * @param  \App\Models\Blog\Post  $post
+     * @param  \RyanChandler\FilamentNavigation\Models\Navigation  $navigation
      * @return bool
      */
-    public function forceDelete(User $user, Post $post): bool
+    public function forceDelete(User $user, Navigation $navigation): bool
     {
-        return $user->can('force_delete_blog::post');
+        return $user->can('force_delete_navigation');
     }
 
     /**
@@ -99,19 +99,19 @@ class PostPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_blog::post');
+        return $user->can('force_delete_any_navigation');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\Management\User  $user
-     * @param  \App\Models\Blog\Post  $post
+     * @param  \RyanChandler\FilamentNavigation\Models\Navigation  $navigation
      * @return bool
      */
-    public function restore(User $user, Post $post): bool
+    public function restore(User $user, Navigation $navigation): bool
     {
-        return $user->can('restore_blog::post');
+        return $user->can('restore_navigation');
     }
 
     /**
@@ -122,19 +122,19 @@ class PostPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_blog::post');
+        return $user->can('restore_any_navigation');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\Management\User  $user
-     * @param  \App\Models\Blog\Post  $post
+     * @param  \RyanChandler\FilamentNavigation\Models\Navigation  $navigation
      * @return bool
      */
-    public function replicate(User $user, Post $post): bool
+    public function replicate(User $user, Navigation $navigation): bool
     {
-        return $user->can('replicate_blog::post');
+        return $user->can('replicate_navigation');
     }
 
     /**
@@ -145,7 +145,7 @@ class PostPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_blog::post');
+        return $user->can('reorder_navigation');
     }
 
 }
