@@ -6,6 +6,7 @@ use App\Filament\Resources\Management\UserResource;
 use Awcodes\Curator\CuratorPlugin;
 use Awcodes\FilamentQuickCreate\QuickCreatePlugin;
 use Awcodes\LightSwitch\LightSwitchPlugin;
+use BezhanSalleh\FilamentGoogleAnalytics\FilamentGoogleAnalyticsPlugin;
 use BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use BezhanSalleh\FilamentShield\Resources\RoleResource;
@@ -48,11 +49,11 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                \App\Filament\Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+                // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
@@ -91,6 +92,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationCountBadge(),
                 FilamentAuthenticationLogPlugin::make(),
                 FilamentNavigation::make(),
+                FilamentGoogleAnalyticsPlugin::make(),
             ]);
     }
 }
