@@ -16,6 +16,7 @@ class LatestComments extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
+            ->heading(fn () => __('filament-widgets.latest_comments'))
             ->query(Comment::query())
             ->columns([
                 Tables\Columns\TextColumn::make('author.name')
