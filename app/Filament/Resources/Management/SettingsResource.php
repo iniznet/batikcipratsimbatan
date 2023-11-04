@@ -133,7 +133,9 @@ class SettingsResource extends Resource
             'phone' => [
                 Forms\Components\TextInput::make($name)
                     ->label(__('filament-fields.labels.' . $key))
-                    ->numeric(),
+                    ->numeric()
+                    // replace first 0 with 62 if it exists
+                    ->dehydrateStateUsing(fn (string $state) => preg_replace('/^0/', '62', $state))
             ],
             default => [
                 Forms\Components\TextInput::make($name)

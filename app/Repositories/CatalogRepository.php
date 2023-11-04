@@ -35,7 +35,9 @@ class CatalogRepository extends BaseRepository implements CatalogRepositoryContr
 
     public function paginate(int $perPage = 12): CursorPaginator
     {
-        return $this->model->cursorPaginate($perPage);
+        return $this->model
+            ->where('status', 'publish')
+            ->cursorPaginate($perPage);
     }
 
     public function filter(string $title, array $categoryIds, array $materialIds, int $minPrice, int $maxPrice, string $sortType): CursorPaginator
@@ -52,6 +54,7 @@ class CatalogRepository extends BaseRepository implements CatalogRepositoryContr
                 SortType::PRICE_ASC->value => $query->orderBy('price'),
                 SortType::PRICE_DESC->value => $query->orderByDesc('price'),
             })
+            ->where('status', 'publish')
             ->cursorPaginate(10);
     }
 }

@@ -21,6 +21,7 @@ AsyncAlpine
     .init(Alpine)
     .data('carousel', () => import('./components/carousel'))
     .data('iframe', () => import('./components/iframe'))
+    .data('gallery', () => import('./components/gallery'))
     .start();
 
 Livewire.start();

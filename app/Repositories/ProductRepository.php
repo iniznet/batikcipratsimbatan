@@ -14,10 +14,23 @@ class ProductRepository extends BaseRepository implements ProductRepositoryContr
         parent::__construct($model);
     }
 
-    public function getRelated(Product $product): Collection
+    public function getBySlug(string $slug): Product
     {
-        return $this->model->where('shop_category_id', $product->shop_category_id)
-            ->where('id', '!=', $product->id)
+        return $this->model
+            ->where([
+                ['slug', '=', $slug],
+                ['status', '=', 'publish']
+            ])
+            ->firstOrFail();
+    }
+
+    public function getRelateds(Product $product): Collection
+    {
+        return $this->model->where('category_id', $product->category->id)
+            ->where([
+                ['id', '!=', $product->id],
+                ['status', '=', 'publish']
+            ])
             ->limit(4)
             ->get();
     }

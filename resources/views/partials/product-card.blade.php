@@ -3,7 +3,7 @@
   <div class="p-4 space-y-4 transition bg-white border border-gray-200 rounded-md shadow-md hover:shadow-lg hover:-translate-y-1">
     {{-- Image --}}
     <x-image
-      :source="'/build/assets/acara-1-fddba1a3.jpg'"
+      :source="$product->cover->url"
       class="lg:aspect-w-1 lg:aspect-h-1"
     />
 

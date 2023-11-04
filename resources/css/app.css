@@ -17,8 +17,16 @@
         -webkit-appearance: none;
         margin: 0;
     }
+}
 
-    .bg-pattern-1 {
-        background-image: url('@images/pattern-1.jpg');
-    }
+.bg-pattern-1 {
+    background-image: url('@images/pattern-1.jpg');
+}
+
+.swiper {
+    visibility: hidden;
+}
+
+.swiper.swiper-initialized {
+    visibility: visible;
 }

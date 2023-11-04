@@ -9,7 +9,7 @@ use SmashedEgg\LaravelRouteAnnotation\Route;
 class HomeController extends Controller
 {
     #[Route('/', name: 'home', methods: ['GET'])]
-    public function index(Request $request)
+    public function index()
     {
         return view('home');
     }

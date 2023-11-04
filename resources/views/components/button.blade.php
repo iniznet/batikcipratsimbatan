@@ -1,5 +1,5 @@
 @if ($type === 'link')
-  <a {{ $attributes->twMerge($classes) }}>
+  <a {{ $attributes->twMerge($classes)->except('type') }}>
     {{ $slot }}
   </a>
 @else

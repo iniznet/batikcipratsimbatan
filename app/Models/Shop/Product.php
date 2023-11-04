@@ -49,4 +49,9 @@ class Product extends Model
             ->withPivot('order')
             ->orderByPivot('order');
     }
+
+    public function getCoverAttribute(): Media
+    {
+        return $this->productPictures->first();
+    }
 }

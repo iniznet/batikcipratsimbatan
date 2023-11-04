@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Contracts\ProductRepository;
 use Illuminate\Http\Request;
 use SmashedEgg\LaravelRouteAnnotation\Route;
 
@@ -9,8 +10,11 @@ use SmashedEgg\LaravelRouteAnnotation\Route;
 class ProductController extends Controller
 {
     #[Route('/produk/{slug}', name: 'product.detail', methods: ['GET'])]
-    public function detail(Request $request)
+    public function detail(ProductRepository $productRepository, string $slug)
     {
-        return view('product');
+        $product = $productRepository->getBySlug($slug);
+        $relatedProducts = $productRepository->getRelateds($product);
+
+        return view('product', compact('product', 'relatedProducts'));
     }
 }

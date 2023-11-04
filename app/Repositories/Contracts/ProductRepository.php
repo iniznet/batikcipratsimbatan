@@ -7,4 +7,7 @@ use Illuminate\Support\Collection;
 
 interface ProductRepository
 {
+    public function getBySlug(string $slug): Product;
+
+    public function getRelateds(Product $product): Collection;
 }
