@@ -2,9 +2,9 @@
   {{-- Container --}}
   <div class="relative z-10 px-5 md:px-8 lg:px-10 max-w-[1440px] xl:px-24 2xl:max-w-full mx-auto">
     {{-- Content --}}
-    <div class="lg:grid grid-cols-7 space-y-4">
+    <div class="grid-cols-7 space-y-4 lg:grid">
       {{-- Left --}}
-      <div class="relative col-span-3 space-y-4 pr-8">
+      <div class="relative col-span-3 pr-8 space-y-4">
         {{-- Logo --}}
         <div
           x-data
@@ -73,9 +73,23 @@
   </div>
 </footer>
 
-{{-- Load FancyBox --}}
-<div
-  x-ignore
-  ax-load
-  x-data="iframe"
-/>
+@push('scripts')
+  {{-- Load FancyBox --}}
+  <div
+    x-ignore
+    ax-load
+    x-data="iframe"
+    x-init="$el.remove()"
+  ></div>
+
+  @if (config("settings.google_analytics_id"))
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('settings.google_analytics_id') }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ config("settings.google_analytics_id") }}');
+    </script>
+  @endif
+@endpush
