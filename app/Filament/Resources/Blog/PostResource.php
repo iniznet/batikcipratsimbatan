@@ -184,15 +184,6 @@ class PostResource extends Resource
                     ->label(__('filament-fields.labels.published_at'))
                     ->date()
                     ->toggleable(),
-
-                Tables\Columns\TextColumn::make('comments_amount')
-                    ->label(__('Comments'))
-                    ->sortable()
-                    ->getStateUsing(fn (Post $post): string => match ($post->comments()->count()) {
-                        0 => __('No comments'),
-                        default => __(':count comments', ['count' => $post->comments()->count()]),
-                    })
-                    ->toggleable(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('published_at')
@@ -247,7 +238,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            CommentsRelationManager::class,
+            // CommentsRelationManager::class,
         ];
     }
 
