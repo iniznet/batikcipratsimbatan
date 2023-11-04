@@ -33,6 +33,7 @@
     @include('sections.footer')
   </div>
 
+  @yield('widgets')
   @stack('scripts')
   @livewireScriptConfig
 </body>

@@ -57,7 +57,13 @@
               <x-lucide-search class="w-5 h-5" />
             </x-lucide>
           </x-button>
-          <x-button :color="'secondary'" :shape="'circle'" :class="'lg:hidden'">
+
+          <x-button
+            :color="'secondary'"
+            :shape="'circle'"
+            :class="'lg:hidden'"
+            @click.prevent="$dispatch('mobile-menu')"
+          >
             <x-lucide>
               <x-lucide-menu class="w-6 h-6" />
             </x-lucide>
@@ -69,5 +75,64 @@
 
   {{-- Search Modal --}}
   <livewire:search-modal />
-
 </header>
+
+@section('widgets')
+  {{-- Mobile Menu --}}
+  <div
+    x-data="{ open: false }"
+    @disable-scroll.window="open = false"
+    @keydown.window.escape="open = false"
+    @mobile-menu.window="open = !open"
+    class="fixed inset-0 z-50 w-full h-full bg-white lg:hidden"
+    x-transition:enter="transition transform duration-300"
+    x-transition:enter-start="translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition transform duration-300"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="translate-x-full"
+    x-show="open"
+    x-cloak
+  >
+    {{-- Container --}}
+    <x-container>
+      {{-- Top --}}
+      {{-- Site title and close button --}}
+      <div class="flex items-center justify-between py-4">
+        {{-- Site title --}}
+        <div class="flex items-center gap-4">
+          @if ($siteLogo)
+            <img src="{{ $siteLogo?->url }}" class="h-16" alt="">
+          @else
+            <span class="block text-3xl font-semibold leading-normal lg:text-4xl">{{ $siteTitles[0] }}</span>
+            <span class="block -mt-4 text-2xl font-light leading-normal">{{ $siteTitles[1] }}</span>
+          @endif
+        </div>
+
+        {{-- Close button --}}
+        <x-button
+          :color="'secondary'"
+          :shape="'circle'"
+          :size="'md'"
+          @click.prevent="open = false"
+        >
+          <x-lucide class="p-1">
+            <x-lucide-x class="w-5 h-5" />
+          </x-lucide>
+        </x-button>
+      </div>
+
+      {{-- Center --}}
+      {{-- Navigation Menu --}}
+      <nav>
+        <ul class="font-semibold font-heading">
+          @foreach ($headerMenu->items as $item)
+            <li>
+              <a href="{{ $item['data']['url'] ?? '#' }}" class="block py-4 text-2xl transition hover:text-[#006ce2]" wire:navigate.hover>{{ $item['label'] }}</a>
+            </li>
+          @endforeach
+        </ul>
+      </nav>
+    </x-container>
+  </div>
+@endsection
