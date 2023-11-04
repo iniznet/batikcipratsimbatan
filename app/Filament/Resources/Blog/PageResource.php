@@ -63,7 +63,6 @@ class PageResource extends Resource
 
                                 TiptapEditor::make('content')
                                     ->label(__('filament-fields.labels.content'))
-                                    ->required()
                                     ->columnSpanFull()
                                     ->profile('custom')
                                     ->tools([
