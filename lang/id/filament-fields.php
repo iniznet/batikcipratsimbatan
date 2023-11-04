@@ -37,8 +37,22 @@ return [
         'published_from' => 'Dipublikasikan dari',
         'published_until' => 'Dipublikasikan sampai',
         'is_visible' => 'Boleh tampil',
+
         'label' => 'Label',
         'value' => 'Nilai',
+
+        'home_featured_images' => 'Gambar unggulan',
+        'home_video_url' => 'URL Video Profil',
+        'home_socials' => 'Sosial media',
+        'home_about_title' => 'Siapa Kami: Judul',
+        'home_about_image' => 'Siapa Kami: Gambar',
+        'home_about_desc' => 'Siapa Kami: Deskripsi',
+        'home_about_tagline' => 'Siapa Kami: Slogan',
+        'home_activity_title' => 'Aktivitas: Judul',
+        'home_catalog_title' => 'Katalog: Judul',
+        'home_catalog_desc' => 'Katalog: Deskripsi',
+        'home_catalog_iframe_url' => 'Katalog: URL eBook iframe',
+
         'logo' => 'Logo',
         'site_title' => 'Judul situs',
         'tagline' => 'Slogan',
@@ -47,6 +61,7 @@ return [
         'primary_navigation' => 'Navigasi Utama',
         'footer_navigation_1' => 'Navigasi Dasar 1',
         'footer_navigation_2' => 'Navigasi Dasar 2',
+        'google_analytics_id' => 'ID Google Analytics',
     ],
 
     'descriptions' => [

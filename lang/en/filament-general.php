@@ -12,4 +12,5 @@ return [
     'empty' => 'Empty',
     'items' => 'Items',
     'phone_numbers' => 'Phone numbers',
+    'saved' => 'Saved',
 ];

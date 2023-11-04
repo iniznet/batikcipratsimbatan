@@ -23,22 +23,24 @@ return new class extends Migration
 
         Settings::create([
             'key' => 'logo',
-            'type' => 'image',
+            'type' => 'curator',
         ]);
 
         Settings::create([
             'key' => 'site_title',
-            'value' => 'Laravel Filament',
+            'value' => 'Batik Ciprat Langitan',
             'type' => 'text',
         ]);
 
         Settings::create([
             'key' => 'tagline',
+            'value' => 'Menyatukan dan Mengembangkan Para Difabel',
             'type' => 'textarea',
         ]);
 
         Settings::create([
             'key' => 'description',
+            'value' => 'adalah sebuah komunitas yang bergerak di bidang batik diperuntukkan bagi masyarakat difabel.',
             'type' => 'textarea',
         ]);
 
@@ -62,10 +64,14 @@ return new class extends Migration
         Settings::create([
             'key' => 'primary_navigation',
             'type' => 'menu',
-        ], [
+        ]);
+
+        Settings::create([
             'key' => 'footer_navigation_1',
             'type' => 'menu',
-        ], [
+        ]);
+
+        Settings::create([
             'key' => 'footer_navigation_2',
             'type' => 'menu',
         ]);

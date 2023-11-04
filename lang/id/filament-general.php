@@ -12,4 +12,5 @@ return [
     'empty' => 'Kosong',
     'items' => 'Item',
     'phone_numbers' => 'Nomor telepon',
+    'saved' => 'Tersimpan',
 ];

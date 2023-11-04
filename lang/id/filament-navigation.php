@@ -20,5 +20,6 @@ return [
         'settings' => 'Pengaturan',
         'carousel' => 'Unggulan',
         'people' => 'Tim',
+        'homepage-settings' => 'Pengaturan Beranda',
     ],
 ];

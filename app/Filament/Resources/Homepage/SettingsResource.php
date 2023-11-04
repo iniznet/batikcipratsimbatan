@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Management;
+namespace App\Filament\Resources\Homepage;
 
 use App\Filament\Resources\Concerns\SettingSchema;
-use App\Filament\Resources\Management\SettingsResource\Pages;
-use App\Models\Management\Settings;
+use App\Filament\Resources\Homepage\SettingsResource\Pages;
+use App\Models\Homepage\Settings;
 use Awcodes\Curator\Models\Media;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+
 
 class SettingsResource extends Resource
 {
@@ -16,25 +17,25 @@ class SettingsResource extends Resource
 
     protected static ?string $model = Settings::class;
 
-    protected static ?string $slug = 'settings';
+    protected static ?string $slug = 'homepage/settings';
 
     protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
-    protected static ?int $navigationSort = 100;
+    protected static ?int $navigationSort = -2;
 
     public static function getNavigationGroup(): ?string
     {
-        return __('filament-navigation.groups.management');
+        return __('filament-navigation.groups.homepage');
     }
 
     public static function getLabel(): string
     {
-        return __('filament-navigation.labels.settings');
+        return __('filament-navigation.labels.homepage-settings');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('filament-navigation.labels.settings');
+        return __('filament-navigation.labels.homepage-settings');
     }
 
     public static function canCreate(): bool
@@ -90,8 +91,8 @@ class SettingsResource extends Resource
             return $array ?: __('filament-general.empty');
         }
 
-        $array = $array[0];
+        $array = is_array($array[0]) ? $array[0] : $array;
 
-        return count($array) . ' ' . __('filament-general.phone_numbers');
+        return count($array) . ' ' . __('filament-general.saved');
     }
 }

@@ -65,7 +65,6 @@ class ProductResource extends Resource
 
                         TiptapEditor::make('content')
                             ->label(__('filament-fields.labels.content'))
-                            ->required()
                             ->columnSpanFull()
                             ->profile('custom')
                             ->tools([
@@ -152,7 +151,6 @@ class ProductResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('price')
                             ->label(__('filament-fields.labels.price'))
-                            ->required()
                             ->prefix('Rp')
                             ->mask(RawJs::make(<<<'JS'
                                 $money($input, ',', '.')

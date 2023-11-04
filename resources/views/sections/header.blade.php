@@ -68,7 +68,7 @@
     x-data="{ show: false }"
     @search.window="show = !show"
     @click.outside="show = false"
-    class="bg-white py-8 md:pb-12 absolute left-0 shadow-lg w-full"
+    class="absolute left-0 w-full py-8 bg-white shadow-lg md:pb-12"
     x-transition:enter="transition-[top] ease-out duration-300"
     x-transition:enter-start="-top-full"
     x-transition:enter-end="top-full"
@@ -102,6 +102,3 @@
     </div>
   </div>
 </header>
-
-@section('widgets')
-@endsection

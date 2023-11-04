@@ -20,5 +20,6 @@ return [
         'settings' => 'Settings',
         'carousel' => 'Featured',
         'people' => 'People',
+        'homepage-settings' => 'Homepage Settings',
     ],
 ];

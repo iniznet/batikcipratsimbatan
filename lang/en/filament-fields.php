@@ -37,8 +37,22 @@ return [
         'published_from' => 'Published from',
         'published_until' => 'Published until',
         'is_visible' => 'Is visible',
+
         'label' => 'Label',
         'value' => 'Value',
+
+        'home_featured_images' => 'Featured images',
+        'home_video_url' => 'Video Profile URL',
+        'home_socials' => 'Socials',
+        'home_about_title' => 'Who We Are: title',
+        'home_about_image' => 'Who We Are: image',
+        'home_about_desc' => 'Who We Are: description',
+        'home_about_tagline' => 'Who We Are: tagline',
+        'home_activity_title' => 'Activity: title',
+        'home_catalog_title' => 'Catalog: title',
+        'home_catalog_desc' => 'Catalog: description',
+        'home_catalog_iframe_url' => 'Catalog: iframe URL',
+
         'logo' => 'Logo',
         'site_title' => 'Site title',
         'tagline' => 'Tagline',
@@ -47,6 +61,7 @@ return [
         'primary_navigation' => 'Primary navigation',
         'footer_navigation_1' => 'Footer navigation 1',
         'footer_navigation_2' => 'Footer navigation 2',
+        'google_analytics_id' => 'Google Analytics ID',
     ],
 
     'descriptions' => [
