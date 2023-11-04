@@ -1,5 +1,5 @@
 {{-- Product Card --}}
-<a href="{{ route('product.detail', $product->slug) }}">
+<a href="{{ route('product.detail', $product->slug) }}" wire:navigate.hover>
   <div class="p-4 space-y-4 transition bg-white border border-gray-200 rounded-md shadow-md hover:shadow-lg hover:-translate-y-1">
     {{-- Image --}}
     <x-image

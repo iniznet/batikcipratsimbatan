@@ -16,7 +16,7 @@ return [
     'sessions_duration' => 'Rata-rata Durasi Sesi',
     'sessions_by_country' => 'Sesi Berdasarkan Negara',
     'sessions_by_device' => 'Sesi Berdasarkan Perangkat',
-    'top_referrers' => 'Referrer Teratas',
+    'top_referrers' => 'Perujuk Teratas',
     'most_visited_pages' => 'Halaman yang Paling Dikunjungi',
     'one_day_active_users' => 'Pengguna Aktif 1 Hari',
     'seven_day_active_users' => 'Pengguna Aktif 7 Hari',

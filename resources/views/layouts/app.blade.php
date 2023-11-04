@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ config('settings.site_title') }} - @yield('description', config('settings.tagline'))</title>
+  @if ($siteLogo)
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $siteLogo?->url }}">
+  @endif
   @vite('resources/css/app.css')
   @livewireStyles
   @vite('resources/js/app.js')

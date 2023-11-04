@@ -28,7 +28,6 @@ class Dashboard extends \Filament\Pages\Dashboard
     public function getWidgets(): array
     {
         return [
-            AccountWidget::class,
             \BezhanSalleh\FilamentGoogleAnalytics\Widgets\PageViewsWidget::class,
             \BezhanSalleh\FilamentGoogleAnalytics\Widgets\VisitorsWidget::class,
             \BezhanSalleh\FilamentGoogleAnalytics\Widgets\ActiveUsersOneDayWidget::class,

@@ -37,6 +37,8 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        $this->loadSettings();
+
         return $panel
             ->default()
             ->brandName(config('settings.site_title'))
@@ -94,5 +96,26 @@ class AdminPanelProvider extends PanelProvider
                 FilamentNavigation::make(),
                 FilamentGoogleAnalyticsPlugin::make(),
             ]);
+    }
+
+    private function loadSettings()
+    {
+        if ($this->app->runningInConsole()) {
+            return;
+        }
+
+        $settings = DB::table('settings')->get();
+
+        if ($settings) {
+            foreach ($settings as $setting) {
+                if ($setting->type === 'repeater') {
+                    $value = json_decode($setting->value, true);
+                } else {
+                    $value = json_decode($setting->value);
+                }
+
+                config()->set('settings.' . $setting->key, $value);
+            }
+        }
     }
 }

@@ -34,4 +34,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryContr
             ->limit($limit)
             ->get();
     }
+
+    public function search(string $query): Collection
+    {
+        return $this->model
+            ->where('status', '=', 'publish')
+            ->where('title', 'like', "%{$query}%")
+            ->get();
+    }
 }

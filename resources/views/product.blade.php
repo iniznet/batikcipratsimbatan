@@ -87,13 +87,13 @@
             {{-- Category --}}
             <div class="flex flex-wrap items-center space-x-2">
               <strong>{{ __('Kategori') }}: </strong>
-              <a href="{{ route('catalog', ['cat' => [$product->category->id]]) }}" class="text-sm text-blue-500 hover:underline">{{ $product->category->name }}</a>
+              <a href="{{ route('catalog', ['cat' => [$product->category->id]]) }}" class="text-sm text-blue-500 hover:underline" wire:navigate.hover>{{ $product->category->name }}</a>
             </div>
 
             {{-- Materials --}}
             <div class="flex flex-wrap items-center space-x-2">
               <strong>{{ __('Bahan') }}: </strong>
-              <a href="{{ route('catalog', ['mat' => [$product->material->id]]) }}" class="text-sm text-blue-500 hover:underline">{{ $product->material->name }}</a>
+              <a href="{{ route('catalog', ['mat' => [$product->material->id]]) }}" class="text-sm text-blue-500 hover:underline" wire:navigate.hover>{{ $product->material->name }}</a>
             </div>
           </div>
         </div>

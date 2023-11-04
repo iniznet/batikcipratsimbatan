@@ -75,11 +75,6 @@ return new class extends Migration
             'key' => 'footer_navigation_2',
             'type' => 'menu',
         ]);
-
-        Settings::create([
-            'key' => 'google_analytics_id',
-            'type' => 'text',
-        ]);
     }
 
     /**

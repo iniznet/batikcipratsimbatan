@@ -2,7 +2,7 @@
   {{-- Card --}}
   <div class="grid gap-8 p-8 shadow-lg rounded-tl-3xl rounded-br-3xl {{ isset($background) ? $background : 'bg-white' }}">
     {{-- Image --}}
-    <a href="{{ route('blog.detail', $post->slug) }}">
+    <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
       <x-image
         :source="'/build/assets/acara-1-fddba1a3.jpg'"
         class="lg:!aspect-h-[1]"
@@ -11,7 +11,7 @@
 
     {{-- Content --}}
     <div>
-      <a href="{{ route('blog.detail', $post->slug) }}">
+      <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
         <h5 class="text-2xl font-semibold xl:text-3xl 2xl:text-4xl font-heading">{!! $post->title !!}</h5>
       </a>
     </div>
@@ -41,7 +41,7 @@
   <div class="grid gap-8 p-8 shadow-lg rounded-tl-3xl rounded-br-3xl {{ isset($background) ? $background : 'bg-white' }}">
     {{-- Image --}}
     <div class="order-2">
-      <a href="{{ route('blog.detail', $post->slug) }}">
+      <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
         <x-image
           :source="'/build/assets/acara-2-21ec201a.jpg'"
           class="lg:!aspect-h-[1]"
@@ -51,7 +51,7 @@
 
     {{-- Content --}}
     <div>
-      <a href="{{ route('blog.detail', $post->slug) }}">
+      <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
         <h5 class="text-2xl font-semibold xl:text-3xl 2xl:text-4xl font-heading">{!! $post->title !!}</h5>
       </a>
     </div>

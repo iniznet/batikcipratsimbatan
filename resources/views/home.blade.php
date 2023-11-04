@@ -21,7 +21,7 @@
               :padding="false"
               :effects="null"
               :ring="false"
-              href="https://www.youtube.com/watch?v=AnzFSAWeWoI"
+              href="{{ config('home_settings.video_url', '#') }}"
               data-fancybox=""
             >
               <x-lucide

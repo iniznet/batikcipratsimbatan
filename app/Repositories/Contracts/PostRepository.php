@@ -17,4 +17,6 @@ interface PostRepository
     public function getRelateds(Post $post, int $limit = 4): CursorPaginator;
 
     public function paginate(int $perPage = 4, bool $excludeLatest = true): CursorPaginator;
+
+    public function search(string $query): Collection;
 }

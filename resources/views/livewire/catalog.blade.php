@@ -6,7 +6,7 @@
       <div class="sticky top-0 space-y-8">
         {{-- Category Filter --}}
         <div class="space-y-4">
-          <h5 class="text-lg font-semibold">Kategori</h5>
+          <h5 class="text-lg font-semibold">{{ __('Kategori') }}</h5>
           {{-- List of Checkboxes --}}
           <div class="space-y-2">
             @foreach ($categories as $category)
@@ -21,7 +21,7 @@
 
         {{-- Material Filter --}}
         <div class="space-y-4">
-          <h5 class="text-lg font-semibold">Bahan</h5>
+          <h5 class="text-lg font-semibold">{{ __('Bahan') }}</h5>
           {{-- List of Checkboxes --}}
           <div class="space-y-2">
             @foreach ($materials as $material)
@@ -36,7 +36,7 @@
 
         {{-- Price Filter --}}
         <div class="space-y-4">
-          <h5 class="text-lg font-semibold">Harga</h5>
+          <h5 class="text-lg font-semibold">{{ __('Harga') }}</h5>
           <div class="flex items-center space-x-4">
             <x-input
               :value="$minPrice"
@@ -69,7 +69,7 @@
 
         {{-- Sort Types --}}
         <div class="flex items-center space-x-4">
-          <h5 class="text-lg font-semibold">Sortir</h5>
+          <h5 class="text-lg font-semibold">{{ __('Sortir') }}</h5>
           <x-select
             :options="$sortTypes"
             :selected="$selectedSortType"
@@ -87,11 +87,11 @@
           </div>
         </div>
 
-        {{-- Livewire empty --}}
+        {{-- Livewire results --}}
         <div wire:loading.remove class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           @if ($products->isEmpty())
             <div class="flex justify-center col-span-full">
-              <h5 class="text-lg font-semibold">Tidak ada produk yang ditemukan</h5>
+              <h5 class="text-lg font-semibold">{{ __('Tidak ada produk yang ditemukan') }}</h5>
             </div>
           @else
             @foreach ($products as $product)

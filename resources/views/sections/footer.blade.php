@@ -11,15 +11,19 @@
           x-class-init.delay.1000.hold.2000="'scale-110'"
           class="inline-flex justify-start transition duration-1000 font-title place-self-start hover:scale-110"
           >
-          <a href="/" class="text-center">
-            <span class="block text-3xl font-semibold leading-normal lg:text-4xl">Batik Ciprat</span>
-            <span class="block -mt-4 text-2xl font-light leading-normal">Langitan</span>
+          <a href="/" class="text-center" wire:navigate.hover>
+            @if ($siteLogo)
+              <img src="{{ $siteLogo?->url }}" class="h-16" alt="">
+            @else
+              <span class="block text-3xl font-semibold leading-normal lg:text-4xl">{{ $siteTitles[0] }}</span>
+              <span class="block -mt-4 text-2xl font-light leading-normal">{{ $siteTitles[1] }}</span>
+            @endif
           </a>
         </div>
 
         {{-- Tagline --}}
         <div class="text-xl">
-          <p>Batik Ciprat Langitan Simbatan — adalah sebuah komunitas yang bergerak di bidang batik diperuntukkan bagi masyarakat difabel.</p>
+          <p>{{ config('settings.site_title') }} — {{ config('settings.description') }}</p>
         </div>
       </div>
 
@@ -29,33 +33,25 @@
         <div class="grid pb-6 gap-y-4 md:grid-cols-2">
           {{-- Left --}}
           <div class="text-xl">
-            <div class="mb-4 font-semibold">Navigasi</div>
+            <div class="mb-4 font-semibold">{{ __('Navigasi') }}</div>
             <ul class="flex flex-col space-y-2">
-              <li>
-                <a href="/">Beranda</a>
-              </li>
-              <li>
-                <a href="/blog">Blog</a>
-              </li>
-              <li>
-                <a href="/katalog">Katalog</a>
-              </li>
+              @foreach ($footerMenu1->items as $item)
+                <li>
+                  <a href="{{ $item['data']['url'] ?? '#' }}" wire:navigate.hover>{{ $item['label'] }}</a>
+                </li>
+              @endforeach
             </ul>
           </div>
 
           {{-- Right --}}
           <div class="text-xl">
-            <div class="mb-4 font-semibold">Lainnya</div>
+            <div class="mb-4 font-semibold">{{ __('Lainnya') }}</div>
             <ul class="flex flex-col space-y-2">
-              <li>
-                <a href="/page/tentang-kami">Tentang Kami</a>
-              </li>
-              <li>
-                <a href="/page/kebijakan-privasi">Kebijakan Privasi</a>
-              </li>
-              <li>
-                <a href="/page/faq">FAQ</a>
-              </li>
+              @foreach ($footerMenu2->items as $item)
+                <li>
+                  <a href="{{ $item['data']['url'] ?? '#' }}" wire:navigate.hover>{{ $item['label'] }}</a>
+                </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -63,10 +59,12 @@
         {{-- Copyright & Credit --}}
         <div class="grid md:grid-cols-2 pt-6 border-t border-t-[#a5b5e6]">
           {{-- Left --}}
-          <div>@ 2023 Batik Ciprat Langitan Simbatan.<br> All Rights Reserved.</div>
+          <div>@ {{ now()->year . ' ' . config('settings.site_title') }}.<br> {{ __('All Rights Reserved.') }}</div>
 
           {{-- Right --}}
-          <div>Dikembangkan oleh <a href="https://github.com/iniznet/" target="_blank" rel="noopener noreferrer">Tim PPK Deptics 2023</a></div>
+          <div>
+            {!! sprintf(__('Dikembangkan oleh %s'), '<a href="https://github.com/iniznet" target="_blank" rel="noopener noreferrer">' . __('Tim PPK Deptics 2023') . '</a>') !!}
+          </div>
         </div>
       </div>
     </div>

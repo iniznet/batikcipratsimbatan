@@ -5,7 +5,7 @@
     <x-container>
       <x-heading>
         <x-slot name="subheading">{{ __('Blog') }}</x-slot>
-        {{ __('Our Activity') }}
+        {{ __('Aktivitas dan cerita sehari-hari kami') }}
       </x-heading>
     </x-container>
 
@@ -19,7 +19,7 @@
       @if ($post)
       <div class="grid gap-8 p-8 mb-24 shadow-lg rounded-tl-3xl rounded-br-3xl">
         {{-- Image --}}
-        <a href="{{ route('blog.detail', $post->slug) }}">
+        <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
           <x-image
             :source="$post->cover->url"
             class="lg:aspect-w-6 lg:aspect-h-2"
@@ -29,7 +29,7 @@
         {{-- Content --}}
         <div>
           {{-- Title --}}
-          <a href="{{ route('blog.detail', $post->slug) }}">
+          <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
             <h5 class="text-2xl font-semibold xl:text-3xl 2xl:text-4xl font-heading">{!! $post->title !!}
           </a>
 

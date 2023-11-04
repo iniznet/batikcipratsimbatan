@@ -60,11 +60,14 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\Section::make()
                             ->schema([
-                                TitleWithSlugInput::make(fieldTitle: 'title', fieldSlug: 'slug'),
+                                TitleWithSlugInput::make(
+                                    fieldTitle: 'title',
+                                    fieldSlug: 'slug',
+                                    urlPath: '/blog/',
+                                ),
 
                                 TiptapEditor::make('content')
                                     ->label(__('filament-fields.labels.content'))
-                                    ->required()
                                     ->columnSpanFull()
                                     ->profile('custom')
                                     ->tools([

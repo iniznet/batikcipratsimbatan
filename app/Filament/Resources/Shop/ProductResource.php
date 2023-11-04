@@ -61,7 +61,11 @@ class ProductResource extends Resource
             ->schema([
                 Forms\Components\Section::make()
                     ->schema([
-                        TitleWithSlugInput::make(fieldTitle: 'title', fieldSlug: 'slug'),
+                        TitleWithSlugInput::make(
+                            fieldTitle: 'title',
+                            fieldSlug: 'slug',
+                            urlPath: '/produk/',
+                        ),
 
                         TiptapEditor::make('content')
                             ->label(__('filament-fields.labels.content'))

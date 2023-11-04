@@ -24,20 +24,24 @@
           x-class-init.delay.1000.hold.2000="'scale-110'"
           class="text-center transition duration-1000 font-title place-self-start hover:scale-110"
         >
-          <a href="/">
-            <span class="block text-3xl font-semibold leading-normal lg:text-4xl">Batik Ciprat</span>
-            <span class="block -mt-4 text-2xl font-light leading-normal">Langitan</span>
+          <a href="/" wire:navigate.hover>
+            @if ($siteLogo)
+              <img src="{{ $siteLogo?->url }}" class="h-16" alt="">
+            @else
+              <span class="block text-3xl font-semibold leading-normal lg:text-4xl">{{ $siteTitles[0] }}</span>
+              <span class="block -mt-4 text-2xl font-light leading-normal">{{ $siteTitles[1] }}</span>
+            @endif
           </a>
         </div>
 
         {{-- Navigation Menu --}}
         <nav class="hidden px-[2vw] flex-grow lg:block xl:px-[3vw] 2xl:px-[4vw]">
           <ul class="flex font-medium justify-evenly 2xl:text-xl">
-            <li class="transition hover:text-[#006ce2]">Beranda</li>
-            <li class="transition hover:text-[#006ce2]">Blog</li>
-            <li class="transition hover:text-[#006ce2]">Katalog</li>
-            <li class="transition hover:text-[#006ce2]">Tentang Kami</li>
-            <li class="transition hover:text-[#006ce2]">FAQ</li>
+            @foreach ($headerMenu->items as $item)
+              <li class="transition hover:text-[#006ce2]">
+                <a href="{{ $item['data']['url'] ?? '#' }}" wire:navigate.hover>{{ $item['label'] }}</a>
+              </li>
+            @endforeach
           </ul>
         </nav>
 
@@ -63,42 +67,7 @@
     </div>
   </div>
 
-  {{-- Search Bar --}}
-  <div
-    x-data="{ show: false }"
-    @search.window="show = !show"
-    @click.outside="show = false"
-    class="absolute left-0 w-full py-8 bg-white shadow-lg md:pb-12"
-    x-transition:enter="transition-[top] ease-out duration-300"
-    x-transition:enter-start="-top-full"
-    x-transition:enter-end="top-full"
-    x-transition:leave="transition-[top] ease-in duration-300"
-    x-transition:leave-start="top-full"
-    x-transition:leave-end="-top-full"
-    x-show="show"
-    x-cloak
-  >
-    {{-- Container --}}
-    <div class="relative w-full px-6 py-2 2xl:py-8 mx-auto lg:px-8 2xl:px-24 md:px-10 max-w-[1440px] xl:px-24 2xl:max-w-full">
-      {{-- Search line --}}
-      <div class="relative">
-        <form class="flex items-center">
-          {{-- Input --}}
-          <input type="text" class="w-full px-10 py-4 border border-[#e6e9f0] rounded-full focus:outline-none focus:ring-2 focus:ring-[#006ce2]" placeholder="Cari sesuatu..." />
-          {{-- Search icon --}}
-          <div class="absolute left-0 px-4">
-            <x-lucide class="w-5 h-5">
-              <x-lucide-search />
-            </x-lucide>
-          </div>
-          {{-- Clear icon --}}
-          <div class="absolute right-0 px-4">
-            <x-lucide class="w-5 h-5">
-              <x-lucide-x />
-            </x-lucide>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  {{-- Search Modal --}}
+  <livewire:search-modal />
+
 </header>

@@ -6,6 +6,7 @@ use App\Models\Blog\Page;
 use App\Repositories\Contracts\BaseRepository;
 use App\Repositories\Contracts\PageRepository as PageRepositoryContract;
 use Illuminate\Pagination\CursorPaginator;
+use Illuminate\Support\Collection;
 
 class PageRepository extends BaseRepository implements PageRepositoryContract
 {
@@ -29,5 +30,13 @@ class PageRepository extends BaseRepository implements PageRepositoryContract
         return $this->model
             ->where('status', '=', 'publish')
             ->cursorPaginate($perPage);
+    }
+
+    public function search(string $query): Collection
+    {
+        return $this->model
+            ->where('status', '=', 'publish')
+            ->where('title', 'like', "%{$query}%")
+            ->get();
     }
 }
