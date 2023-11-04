@@ -258,13 +258,11 @@
 
       {{-- Cards --}}
       <div class="grid gap-8 lg:grid-cols-3">
-        @include('partials.blog-card')
-        @include('partials.blog-card', [
-          'reverse' => true,
-        ])
-        @include('partials.blog-card', [
-          'reverse' => true,
-        ])
+        @include('partials.blog-card', ['post' => $post])
+
+        @foreach ($posts as $post)
+          @include('partials.blog-card', ['reverse' => true, 'post' => $post])
+        @endforeach
       </div>
     </div>
 
@@ -294,7 +292,7 @@
     </div>
 
     {{-- Background --}}
-    <img src="{{ asset('bg-dots-left.svg') }}" class="absolute right-0 lg:top-60 z-0 max-w-[50%]">
+    <img src="{{ asset('bg-dots-left.svg') }}" class="absolute right-0 lg:top-60 -z-10 max-w-[50%]">
   </section>
 
   {{-- Contact Us --}}

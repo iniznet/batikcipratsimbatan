@@ -16,6 +16,6 @@ class ShopMaterialRepository extends BaseRepository implements ShopMaterialRepos
 
     public function all(): Collection
     {
-        return ShopMaterial::all();
+        return $this->model->all();
     }
 }

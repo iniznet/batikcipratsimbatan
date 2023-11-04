@@ -16,6 +16,6 @@ class ShopCategoryRepository extends BaseRepository implements ShopCategoryRepos
 
     public function all(): Collection
     {
-        return ShopCategory::all();
+        return $this->model->all();
     }
 }

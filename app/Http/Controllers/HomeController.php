@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Contracts\PostRepository;
 use Illuminate\Http\Request;
 use SmashedEgg\LaravelRouteAnnotation\Route;
 
@@ -9,8 +10,11 @@ use SmashedEgg\LaravelRouteAnnotation\Route;
 class HomeController extends Controller
 {
     #[Route('/', name: 'home', methods: ['GET'])]
-    public function index()
+    public function index(PostRepository $postRepository)
     {
-        return view('home');
+        $post = $postRepository->getLatest();
+        $posts = $postRepository->get(2);
+
+        return view('home', compact('post', 'posts'));
     }
 }

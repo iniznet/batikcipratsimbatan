@@ -13,9 +13,4 @@ class BaseRepository implements EloquentRepository
     {
         $this->model = $model;
     }
-
-    public function getBySlug(string $slug): Model
-    {
-        return $this->model->where('slug', $slug)->firstOrFail();
-    }
 }

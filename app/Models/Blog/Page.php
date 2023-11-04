@@ -28,4 +28,14 @@ class Page extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function getCoverAttribute(): ?Media
+    {
+        return $this->featuredImage;
+    }
+
+    public function getExcerptAttribute(): ?string
+    {
+        return substr(strip_tags($this->content), 0, 200);
+    }
 }

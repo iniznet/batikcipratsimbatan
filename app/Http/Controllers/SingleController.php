@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Contracts\PageRepository;
+use App\Repositories\Contracts\PostRepository;
 use Illuminate\Http\Request;
 use SmashedEgg\LaravelRouteAnnotation\Route;
 
@@ -9,20 +11,27 @@ use SmashedEgg\LaravelRouteAnnotation\Route;
 class SingleController extends Controller
 {
     #[Route('/blog', name: 'blog.home', methods: ['GET'])]
-    public function list()
+    public function index(PostRepository $postRepository)
     {
-        return view('blog');
+        $post = $postRepository->getLatest();
+        $posts = $postRepository->paginate(10);
+
+        return view('blog', compact('post', 'posts'));
     }
 
     #[Route('/blog/{slug}', name: 'blog.detail', methods: ['GET'])]
-    public function detail()
+    public function post(PostRepository $postRepository, string $slug)
     {
-        return view('single');
+        $post = $postRepository->getBySlug($slug);
+        $relatedPosts = $postRepository->getRelateds($post);
+
+        return view('single', compact('post', 'relatedPosts'));
     }
 
     #[Route('/{slug}', name: 'page.detail', methods: ['GET'])]
-    public function page()
+    public function page(PageRepository $pageRepository, string $slug)
     {
-        return view('single');
+        $post = $pageRepository->getBySlug($slug);
+        return view('single', compact('post'));
     }
 }

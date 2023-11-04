@@ -11,5 +11,4 @@ use Illuminate\Support\Collection;
  */
 interface EloquentRepository
 {
-    public function getBySlug(string $slug): Model;
 }

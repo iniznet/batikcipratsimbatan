@@ -20,6 +20,6 @@
     </x-container>
 
     {{-- Background --}}
-    <img src="{{ asset('bg-dots-left.svg') }}" class="absolute left-4 -bottom-2 z-0 max-w-[50%]">
+    <img src="{{ asset('bg-dots-left.svg') }}" class="absolute left-4 -bottom-2 -z-10 max-w-[50%]">
   </section>
 @endsection

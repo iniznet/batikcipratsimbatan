@@ -24,14 +24,14 @@ class ProductRepository extends BaseRepository implements ProductRepositoryContr
             ->firstOrFail();
     }
 
-    public function getRelateds(Product $product): Collection
+    public function getRelateds(Product $product, int $limit = 4): Collection
     {
         return $this->model->where('category_id', $product->category->id)
             ->where([
                 ['id', '!=', $product->id],
                 ['status', '=', 'publish']
             ])
-            ->limit(4)
+            ->limit($limit)
             ->get();
     }
 }
