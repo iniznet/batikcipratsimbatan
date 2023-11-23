@@ -37,7 +37,7 @@
         {{-- Navigation Menu --}}
         <nav class="hidden px-[2vw] flex-grow lg:block xl:px-[3vw] 2xl:px-[4vw]">
           <ul class="flex font-medium justify-evenly 2xl:text-xl">
-            @foreach ($headerMenu->items as $item)
+            @foreach ($headerMenu?->items ?: [] as $item)
               <li class="transition hover:text-[#006ce2]">
                 <a href="{{ $item['data']['url'] ?? '#' }}" wire:navigate.hover>{{ $item['label'] }}</a>
               </li>
@@ -126,7 +126,7 @@
       {{-- Navigation Menu --}}
       <nav>
         <ul class="font-semibold font-heading">
-          @foreach ($headerMenu->items as $item)
+          @foreach ($headerMenu?->items ?: [] as $item)
             <li>
               <a href="{{ $item['data']['url'] ?? '#' }}" class="block py-4 text-2xl transition hover:text-[#006ce2]" wire:navigate.hover>{{ $item['label'] }}</a>
             </li>

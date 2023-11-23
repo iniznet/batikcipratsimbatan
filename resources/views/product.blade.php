@@ -21,7 +21,7 @@
                 @foreach ($product->productPictures as $image)
                   <div class="swiper-slide">
                     <x-image
-                      :source="$image->url"
+                      :source="$image?->url"
                       class="object-cover w-full h-full"
                     />
                   </div>

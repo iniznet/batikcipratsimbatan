@@ -4,7 +4,7 @@
     {{-- Image --}}
     <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
       <x-image
-        :source="'/build/assets/acara-1-fddba1a3.jpg'"
+        :source="$post->cover?->url"
         class="lg:!aspect-h-[1]"
       />
     </a>
@@ -22,8 +22,9 @@
       :ring="false"
       :size="'lg'"
       :effects="['text']"
-      href="https://www.facebook.com/edcampua"
+      href="{{ route('blog.detail', $post->slug) }}"
       class="!p-0 order-3 md:justify-start"
+      wire:navigate.hover
     >
       <span class="uppercase">{{ __('Baca Selengkapnya') }}</span>
       <x-lucide
@@ -43,7 +44,7 @@
     <div class="order-2">
       <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
         <x-image
-          :source="'/build/assets/acara-2-21ec201a.jpg'"
+          :source="$post->cover?->url"
           class="lg:!aspect-h-[1]"
         />
       </a>
@@ -62,8 +63,9 @@
       :ring="false"
       :size="'lg'"
       :effects="['text']"
-      href="https://www.facebook.com/edcampua"
+      href="{{ route('blog.detail', $post->slug) }}"
       class="!p-0 order-3 md:justify-start"
+      wire:navigate.hover
     >
       <span class="uppercase">{{ __('Baca Selengkapnya') }}</span>
       <x-lucide

@@ -35,7 +35,7 @@
           <div class="text-xl">
             <div class="mb-4 font-semibold">{{ __('Navigasi') }}</div>
             <ul class="flex flex-col space-y-2">
-              @foreach ($footerMenu1->items as $item)
+              @foreach ($footerMenu1?->items ?: [] as $item)
                 <li>
                   <a href="{{ $item['data']['url'] ?? '#' }}" wire:navigate.hover>{{ $item['label'] }}</a>
                 </li>
@@ -47,7 +47,7 @@
           <div class="text-xl">
             <div class="mb-4 font-semibold">{{ __('Lainnya') }}</div>
             <ul class="flex flex-col space-y-2">
-              @foreach ($footerMenu2->items as $item)
+              @foreach ($footerMenu2?->items ?: [] as $item)
                 <li>
                   <a href="{{ $item['data']['url'] ?? '#' }}" wire:navigate.hover>{{ $item['label'] }}</a>
                 </li>

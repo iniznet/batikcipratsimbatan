@@ -21,7 +21,7 @@
         {{-- Image --}}
         <a href="{{ route('blog.detail', $post->slug) }}" wire:navigate.hover>
           <x-image
-            :source="$post->cover->url"
+            :source="$post->cover?->url"
             class="lg:aspect-w-6 lg:aspect-h-2"
           />
         </a>
