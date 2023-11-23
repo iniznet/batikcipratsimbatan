@@ -11,7 +11,7 @@
     {{-- Header Bar Background --}}
     <div
       :class="fixed && 'h-full'"
-      class="absolute left-0 top-0 h-0 bg-white shadow-[0_6px_33px_rgba(213,213,213,.25)] w-full transition-[height] duration-300 delay-300"
+      class="absolute left-0 top-0 h-0 bg-white shadow-lg w-full transition-[height] duration-300 delay-300"
     ></div>
 
     {{-- Header Bar Container --}}
