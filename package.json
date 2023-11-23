@@ -21,6 +21,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@alpinejs/intersect": "^3.13.3",
         "@fancyapps/ui": "^5.0.24",
         "alpinejs": "^3.13.0",
         "async-alpine": "^1.1.0",

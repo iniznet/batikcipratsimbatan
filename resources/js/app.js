@@ -4,14 +4,24 @@ import.meta.glob([
     '../fonts/**',
 ]);
 
+/** Libraries */
 import AsyncAlpine from 'async-alpine';
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import LocomotiveScroll from 'locomotive-scroll';
 
+/** Components */
 import AlpineNavigationComponent from './components/navigation';
 
+/** Directives */
 import AlpineClassInitDirective from './directives/x-class-init';
 
+/** Plugins */
+import AlpineIntersect from '@alpinejs/intersect'
+
+/** Register plugins */
+Alpine.plugin(AlpineIntersect);
+
+/** Register directives */
 Alpine.directive('class-init', AlpineClassInitDirective);
 
 document.addEventListener('alpine:init', () => {

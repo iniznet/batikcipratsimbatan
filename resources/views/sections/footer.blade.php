@@ -42,7 +42,7 @@
               <x-lucide
                 :effects="['opacity']"
               >
-                <x-dynamic-component :component="'simpleicon-' . strtolower($social['name'])" class="w-10 h-10 text-zinc-500 hover:text-zinc-900" />
+                <x-dynamic-component :component="'simpleicon-' . strtolower($social['name'])" class="w-8 h-8 text-zinc-500 hover:text-zinc-900" />
               </x-lucide>
             </x-button>
           @endforeach

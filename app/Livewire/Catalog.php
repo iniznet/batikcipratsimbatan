@@ -63,11 +63,6 @@ class Catalog extends Component
         $this->resetPage();
     }
 
-    public function mount()
-    {
-
-    }
-
     public function render(
         CatalogRepository $catalogRepository,
         ShopCategoryRepository $shopCategoryRepository,
