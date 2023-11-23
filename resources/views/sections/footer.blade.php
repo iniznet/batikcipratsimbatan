@@ -25,6 +25,28 @@
         <div class="text-xl">
           <p>{{ config('settings.site_title') }} — {{ config('settings.description') }}</p>
         </div>
+
+        {{-- Social Icons --}}
+        <div class="flex justify-between -mx-3 font-heading lg:justify-start lg:gap-4">
+          @foreach ($socials as $social)
+            <x-button
+              :type="'link'"
+              :color="'tertiary'"
+              :effects="['scale-in']"
+              :ring="false"
+              :shape="'circle'"
+              href="{{ $social['link'] }}"
+              class="px-3 py-3 md:py-2"
+              target="_blank"
+            >
+              <x-lucide
+                :effects="['opacity']"
+              >
+                <x-dynamic-component :component="'simpleicon-' . strtolower($social['name'])" class="w-10 h-10 text-zinc-500 hover:text-zinc-900" />
+              </x-lucide>
+            </x-button>
+          @endforeach
+        </div>
       </div>
 
       {{-- Right --}}
@@ -59,17 +81,48 @@
         {{-- Copyright & Credit --}}
         <div class="grid md:grid-cols-2 pt-6 border-t border-t-[#a5b5e6]">
           {{-- Left --}}
-          <div>@ {{ now()->year . ' ' . config('settings.site_title') }}.<br> {{ __('All Rights Reserved.') }}</div>
+          <div>
+            {{-- Copyright --}}
+            <div>@ {{ now()->year . ' ' . config('settings.site_title') }}.<br> {{ __('All Rights Reserved.') }}</div>
+          </div>
 
           {{-- Right --}}
           <div>
-            {!! sprintf(__('Dikembangkan oleh %s'), '<a href="https://github.com/iniznet" target="_blank" rel="noopener noreferrer">' . __('Tim PPK Deptics 2023') . '</a>') !!}
+            {{-- Credit --}}
+            <div>
+              {!! sprintf(__('Dikembangkan oleh %s'), '<a href="https://github.com/iniznet" target="_blank" rel="noopener noreferrer">' . __('Tim PPK Deptics 2023') . '</a>') !!}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+@push('widgets')
+  {{-- WhatsApp Button --}}
+  <div
+    class="fixed bottom-0 right-0 z-10 p-4"
+    data-scroll
+    data-scroll-sticky
+  >
+    <x-button
+      type="link"
+      color=""
+      shape="circle"
+      size="md"
+      effects="scale-in"
+      @click.prevent="open = false"
+      class="bg-[#25D366] hover:bg-[#075E54]"
+      href="https://api.whatsapp.com/send?phone={{ $primaryPhone }}&text=Halo%20{{ config('settings.site_title') }}%2C%0A%0ASaya%20ingin%20bertanya%20tentang%20..."
+      target="_blank"
+    >
+      <x-lucide class="p-1">
+        <x-dynamic-component :component="'simpleicon-whatsapp'" class="w-7 h-7" style="color: #fff;" />
+      </x-lucide>
+    </x-button>
+  </div>
+@endpush
 
 @push('scripts')
   {{-- Load FancyBox --}}
