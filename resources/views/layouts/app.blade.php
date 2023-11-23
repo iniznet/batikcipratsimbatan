@@ -9,9 +9,8 @@
   @if ($siteLogo)
     <link rel="shortcut icon" type="image/x-icon" href="{{ $siteLogo?->url }}">
   @endif
-  @vite('resources/css/app.css')
+  @vite('resources/css/app.scss')
   @livewireStyles
-  @vite('resources/js/app.js')
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,10 +30,11 @@
     </main>
 
     @include('sections.footer')
+    @stack('widgets')
   </div>
 
-  @yield('widgets')
   @stack('scripts')
+  @vite('resources/js/app.js')
   @livewireScriptConfig
 </body>
 
