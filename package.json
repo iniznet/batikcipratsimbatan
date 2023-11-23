@@ -15,6 +15,7 @@
         "cropperjs": "^1.5.13",
         "laravel-vite-plugin": "^0.7.5",
         "postcss": "^8.4.28",
+        "sass": "^1.69.5",
         "tailwindcss": "^3.3.3",
         "tippy.js": "^6.3.7",
         "vite": "^4.0.0"
@@ -23,6 +24,7 @@
         "@fancyapps/ui": "^5.0.24",
         "alpinejs": "^3.13.0",
         "async-alpine": "^1.1.0",
+        "locomotive-scroll": "^5.0.0-beta.10",
         "swiper": "^10.2.0"
     }
 }

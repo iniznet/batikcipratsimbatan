@@ -6,6 +6,7 @@ import.meta.glob([
 
 import AsyncAlpine from 'async-alpine';
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import LocomotiveScroll from 'locomotive-scroll';
 
 import AlpineNavigationComponent from './components/navigation';
 
@@ -15,6 +16,8 @@ Alpine.directive('class-init', AlpineClassInitDirective);
 
 document.addEventListener('alpine:init', () => {
     Alpine.data('navigation', AlpineNavigationComponent);
+
+    const locomotiveScroll = new LocomotiveScroll();
 });
 
 AsyncAlpine

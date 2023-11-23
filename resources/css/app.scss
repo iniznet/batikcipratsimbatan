@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'node_modules/locomotive-scroll/dist/locomotive-scroll';
+
 @layer base {
     :root {
         --swiper-pagination-color: rgb(202 138 4 / 1);
