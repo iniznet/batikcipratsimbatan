@@ -33,4 +33,15 @@ class HomeSettingsRepository extends BaseRepository implements HomeSettingsRepos
 
         return $featureds->toArray();
     }
+
+    public function getAboutImage(): ?Media
+    {
+        $aboutImageId = $this->model->where('key', 'home_about_image')->first()?->value ?? null;
+
+        if (!$aboutImageId) {
+            return null;
+        }
+
+        return Media::find($aboutImageId);
+    }
 }

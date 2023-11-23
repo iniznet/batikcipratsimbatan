@@ -17,7 +17,7 @@ class HomeController extends Controller
     )
     {
         $featureds = $homeSettingsRepository->getFeatureds();
-        $socials = $homeSettingsRepository->get('socials', []);
+        $aboutImage = $homeSettingsRepository->getAboutImage();
 
         $post = $postRepository->getLatest();
         $posts = $postRepository->get(2);
@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         return view('home', [
             'featureds' => $featureds,
-            'socials' => $socials,
+            'aboutImage' => $aboutImage,
             'post' => $post,
             'posts' => $posts,
             'openingMessage' => $openingMessage,

@@ -16,6 +16,9 @@ class AppComposer
         $view->with('siteLogo', $this->getSiteLogo());
         $view->with('siteTitle', config('settings.site_title'));
         $view->with('siteTitles', $this->getSiteTitles());
+
+        $view->with('primaryPhone', $this->getPrimaryPhone());
+        $view->with('socials', $this->getSocials());
     }
 
     private function getHomeSettings(): array
@@ -81,6 +84,20 @@ class AppComposer
             0 => implode(' ', $firstRow),
             1 => implode(' ', $secondRow),
         ];
+    }
 
+    private function getPrimaryPhone(): ?string
+    {
+        $phones = config('settings.whatsapp_numbers', []);
+        return $phones[0]['phone'] ?? null;
+    }
+
+    private function getSocials(): array
+    {
+        $homeSettingsRepository = app(\App\Repositories\Contracts\HomeSettingsRepository::class);
+
+        $socials = $homeSettingsRepository->get('socials', []);
+
+        return $socials;
     }
 }

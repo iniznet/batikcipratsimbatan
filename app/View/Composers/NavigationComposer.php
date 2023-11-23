@@ -14,18 +14,18 @@ class NavigationComposer
         $view->with('footerMenu2', $this->getFooterMenu2());
     }
 
-    private function getHeaderMenu(): Navigation
+    private function getHeaderMenu(): ?Navigation
     {
-        return Navigation::fromHandle(config('settings.primary_navigation'));
+        return Navigation::fromHandle(config('settings.primary_navigation') ?: '');
     }
 
-    private function getFooterMenu1(): Navigation
+    private function getFooterMenu1(): ?Navigation
     {
-        return Navigation::fromHandle(config('settings.footer_navigation_1'));
+        return Navigation::fromHandle(config('settings.footer_navigation_1') ?: '');
     }
 
-    private function getFooterMenu2(): Navigation
+    private function getFooterMenu2(): ?Navigation
     {
-        return Navigation::fromHandle(config('settings.footer_navigation_2'));
+        return Navigation::fromHandle(config('settings.footer_navigation_2') ?: '');
     }
 }

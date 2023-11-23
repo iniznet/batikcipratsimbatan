@@ -20,7 +20,7 @@ class PostRepository extends BaseRepository implements PostRepositoryContract
         if ($excludeLatest) {
             return $this->model
                 ->where('status', '=', 'publish')
-                ->where('id', '<>', $this->model->latest()->first()->id)
+                ->where('id', '<>', $this->model->latest()?->first()?->id ?? 0)
                 ->limit($limit)
                 ->get();
         }
@@ -69,7 +69,7 @@ class PostRepository extends BaseRepository implements PostRepositoryContract
         if ($excludeLatest) {
             return $this->model
                 ->where('status', '=', 'publish')
-                ->where('id', '<>', $this->model->latest()->first()->id)
+                ->where('id', '<>', $this->model->latest()?->first()?->id ?? 0)
                 ->cursorPaginate($perPage);
         }
 
