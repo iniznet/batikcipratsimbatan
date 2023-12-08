@@ -206,7 +206,7 @@
         {{-- Left --}}
         <div class="col-span-4 mb-8" data-scroll data-scroll-speed="-0.05">
           <x-image
-            :source="config('home_settings.about_image')"
+            :source="$aboutImage?->url"
             class="aspect-w-3 aspect-h-2 lg:!aspect-h-[1.5]"
           />
         </div>
