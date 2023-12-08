@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\Management\Subscriber;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Newsletter extends Component
 {
@@ -18,6 +20,12 @@ class Newsletter extends Component
 
     public function save()
     {
+        Subscriber::create([
+            'email' => $this->email,
+            'token' => Str::random(40),
+            'active' => true,
+        ]);
+
         $this->subscribed = true;
     }
 }

@@ -34,7 +34,7 @@
           <x-loading class="!text-white" />
         </div>
         <div wire:loading.remove>
-          <span>Subscribe</span>
+          <span>Berlanggan</span>
         </div>
       </button>
     </form>
