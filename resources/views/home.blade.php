@@ -149,7 +149,7 @@
             :effects="['scale-in']"
             :ring="false"
             :shape="'circle'"
-            href="{{ $social['name'] }}"
+            href="{{ $social['link'] }}"
             class="px-3 py-3 md:py-2 2xl:text-xl"
             target="_blank"
           >
